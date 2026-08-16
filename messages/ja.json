@@ -55,10 +55,6 @@
     "deployedAgo": "本日",
     "copyright": "© {year} chirag singh · テンプレートではなく、手作り"
   },
-  "preview": {
-    "eyebrow": "// ライト / ダーク",
-    "hint": "ドラッグして比較"
-  },
   "systems": {
     "eyebrow": "// ライブシステム",
     "syncedAgo": "たった今同期",

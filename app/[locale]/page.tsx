@@ -1,7 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { Header } from "@/components/site/header";
 import { Hero } from "@/components/site/hero";
-import { ThemePreviewSection } from "@/components/site/theme-preview-section";
 import { Footer } from "@/components/site/footer";
 import { SiteCursor } from "@/components/site/site-cursor";
 import { ScrollProgressBar } from "@/components/site/scroll-progress-bar";
@@ -28,7 +27,6 @@ export default async function HomePage({
       <div className="relative mx-auto max-w-[1240px] px-[clamp(20px,5vw,64px)]">
         <Header />
         <Hero />
-        <ThemePreviewSection />
         <LiveSystemsSection />
         <ExperienceSection />
         <WorkSection />

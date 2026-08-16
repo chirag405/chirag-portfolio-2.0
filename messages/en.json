@@ -55,10 +55,6 @@
     "deployedAgo": "today",
     "copyright": "© {year} chirag singh · crafted, not templated"
   },
-  "preview": {
-    "eyebrow": "// light / dark",
-    "hint": "drag to compare"
-  },
   "systems": {
     "eyebrow": "// live systems",
     "syncedAgo": "synced just now",
