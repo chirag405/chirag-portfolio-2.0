@@ -6,6 +6,7 @@ import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import { Terminal } from "@/components/ui/terminal";
 import { LinkPreview } from "@/components/ui/link-preview";
+import { NameLamp } from "@/components/site/name-lamp";
 import { downloadResume } from "@/lib/download-resume";
 
 export function Hero() {
@@ -35,25 +36,28 @@ export function Hero() {
           <span>{t("roleTag")}</span>
         </div>
 
-        <h1
-          className="m-0 font-serif font-normal"
-          style={{
-            lineHeight: 0.88,
-            letterSpacing: "-0.015em",
-            fontSize: "clamp(64px,11.5vw,156px)",
-          }}
-        >
-          <span className="block overflow-hidden">
-            <TextEffect as="span" per="line" preset="slide" delay={0.05} className="inline-block">
-              {t("firstName")}
-            </TextEffect>
-          </span>
-          <span className="block overflow-hidden">
-            <TextEffect as="span" per="line" preset="slide" delay={0.16} className="inline-block">
-              {`${t("lastName")}.`}
-            </TextEffect>
-          </span>
-        </h1>
+        <div className="relative">
+          <NameLamp />
+          <h1
+            className="relative z-10 m-0 font-serif font-normal"
+            style={{
+              lineHeight: 0.88,
+              letterSpacing: "-0.015em",
+              fontSize: "clamp(64px,11.5vw,156px)",
+            }}
+          >
+            <span className="block overflow-hidden">
+              <TextEffect as="span" per="line" preset="slide" delay={0.05} className="inline-block">
+                {t("firstName")}
+              </TextEffect>
+            </span>
+            <span className="block overflow-hidden">
+              <TextEffect as="span" per="line" preset="slide" delay={0.16} className="inline-block">
+                {`${t("lastName")}.`}
+              </TextEffect>
+            </span>
+          </h1>
+        </div>
 
         <p className="mt-8 max-w-[46ch] text-[15px] leading-[1.72] text-[color:var(--fg)]">
           {t("introLead")} <span style={{ color: "var(--accent)" }}>{t("introAccent")}</span>{" "}
