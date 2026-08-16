@@ -60,23 +60,25 @@ export function HueLever() {
   const knobLeft = `${(knobPct * 100).toFixed(1)}%`;
 
   return (
-    <div
-      title={t("themeLeverTitle")}
-      className="flex h-5 items-center gap-0"
-    >
+    <div title={t("themeLeverTitle")} className="flex h-5 items-center gap-2">
+      <span
+        aria-hidden="true"
+        className="h-2.5 w-2.5 flex-none rounded-full"
+        style={{ background: "var(--accent)" }}
+      />
       <div
         ref={trackRef}
         onPointerDown={onPointerDown}
         data-cursor="drag"
         className="relative flex h-5 w-24 cursor-ew-resize items-center touch-none"
       >
-        <div className="absolute left-0 right-0 h-px bg-[color:var(--line)]" />
+        <div className="absolute left-0 right-0 h-[2px] rounded-full bg-[color:var(--line)]" />
         <div
-          className="absolute left-0 h-px transition-[width] duration-75 linear"
+          className="absolute left-0 h-[2px] rounded-full transition-[width] duration-75 linear"
           style={{ width: knobLeft, background: "var(--accent)" }}
         />
         <div
-          className="absolute h-2.5 w-2.5 -translate-x-1/2 rounded-full transition-[left] duration-75 linear"
+          className="absolute h-3 w-3 -translate-x-1/2 rounded-full border border-[color:var(--bg)] transition-[left] duration-75 linear"
           style={{
             left: knobLeft,
             background: "var(--accent)",
