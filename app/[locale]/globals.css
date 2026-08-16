@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-card: var(--card);
+  --color-accent: var(--accent);
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  --font-serif: var(--font-instrument-serif), serif;
+}
+
+:root {
+  --bg: #fafaf8;
+  --fg: #0a0a0a;
+  --muted: #6b6b64;
+  --faint: #9a9a92;
+  --line: rgba(10, 10, 10, 0.1);
+  --line2: rgba(10, 10, 10, 0.06);
+  --card: #ffffff;
+  --accent: oklch(0.58 0.21 258);
+  --accent-weak: oklch(0.58 0.21 258 / 0.12);
+  --accent-ghost: oklch(0.58 0.21 258 / 0.045);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --fg: #fafaf8;
+  --muted: #a6a69e;
+  --faint: #6b6b64;
+  --line: rgba(250, 250, 248, 0.12);
+  --line2: rgba(250, 250, 248, 0.07);
+  --card: #131311;
+  color-scheme: dark;
+}
+
+/* pre-hydration fallback for users without JS: honor system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --bg: #0a0a0a;
+    --fg: #fafaf8;
+    --muted: #a6a69e;
+    --faint: #6b6b64;
+    --line: rgba(250, 250, 248, 0.12);
+    --line2: rgba(250, 250, 248, 0.07);
+    --card: #131311;
+    color-scheme: dark;
+  }
+}
+
+:root,
+:root[data-theme] {
+  transition: none;
+}
+body {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--fg);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+a:hover {
+  opacity: 0.62;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 0;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+@keyframes slashSweep {
+  0% {
+    stroke-dashoffset: 520;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+@keyframes flareUp {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+@keyframes eggIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  60% {
+    transform: translateY(-4px) scale(1.005);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+body.cur-none,
+body.cur-none * {
+  cursor: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.04s !important;
+    scroll-behavior: auto !important;
+  }
+}

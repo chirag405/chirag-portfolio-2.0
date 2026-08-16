@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "चिराग सिंह — एआई इंजीनियर",
+    "description": "चिराग सिंह — एआई इंजीनियर। जेनएआई और फुल-स्टैक। प्रोडक्शन में एलएलएम सिस्टम।",
+    "ogTitle": "चिराग सिंह — एआई इंजीनियर",
+    "ogDescription": "जेनएआई और फुल-स्टैक। प्रोडक्शन में एलएलएम सिस्टम — रिट्रीवल, इवैल्स, सर्विंग।"
+  },
+  "header": {
+    "name": "chirag_singh",
+    "role": "ai_engineer",
+    "navSystems": "सिस्टम्स",
+    "navWork": "काम",
+    "navStack": "स्टैक",
+    "themeLeverTitle": "रंग बदलने के लिए खींचें",
+    "themeToggleTitle": "लाइट / डार्क बदलें"
+  },
+  "languageSwitcher": {
+    "label": "भाषा"
+  },
+  "hero": {
+    "availableForWork": "काम के लिए उपलब्ध",
+    "roleTag": "एआई इंजीनियर — जेनएआई और फुल-स्टैक",
+    "firstName": "चिराग",
+    "lastName": "सिंह",
+    "introLead": "मैं बनाता और चलाता हूँ",
+    "introAccent": "प्रोडक्शन में एलएलएम सिस्टम",
+    "introMid": "— रिट्रीवल, इवैल्स, और सर्विंग जो असली लोड में टिके रहते हैं।",
+    "introMuted": "डेमो कम, इन्फ्रास्ट्रक्चर ज़्यादा।",
+    "ctaWork": "चुने हुए काम →",
+    "ctaGithub": "github ↗",
+    "ctaResume": "resume.json ↓",
+    "statYearsUnit": "साल",
+    "statYearsLabel": "एआई इंजीनियरिंग",
+    "statProjectsLabel": "शिप किए प्रोजेक्ट्स",
+    "statPublicationsLabel": "प्रकाशन",
+    "terminalWindowTitle": "~/chirag — zsh",
+    "terminalWhoamiCmd": "whoami",
+    "terminalWhoamiOutput": "chirag — ai engineer",
+    "terminalRoleCmd": "cat role.json",
+    "terminalStatus": "online",
+    "terminalHint": "कहीं भी <fg>whoami</fg> टाइप करें ↵"
+  },
+  "footer": {
+    "heading": "चलिए कुछ बनाते हैं।",
+    "linkEmail": "ईमेल",
+    "linkGithub": "github",
+    "linkLeetcode": "leetcode",
+    "linkLinkedin": "linkedin",
+    "linkX": "x",
+    "operational": "सभी सिस्टम चालू हैं",
+    "timezone": "IST",
+    "buildLabel": "बिल्ड",
+    "deployedLabel": "डिप्लॉय हुआ",
+    "deployedAgo": "आज",
+    "copyright": "© {year} चिराग सिंह · बनाया गया, टेम्पलेट नहीं"
+  },
+  "cursor": {
+    "view": "देखें",
+    "open": "खोलें",
+    "download": "डाउनलोड",
+    "expand": "विस्तार",
+    "chat": "चैट",
+    "close": "बंद करें",
+    "drag": "खींचें",
+    "select": "चुनें",
+    "toggle": "बदलें"
+  }
+}

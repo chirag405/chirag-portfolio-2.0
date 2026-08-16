@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "Chirag Singh — Ingeniero de IA",
+    "description": "Chirag Singh — Ingeniero de IA. GenAI y Full-Stack. Sistemas LLM en producción.",
+    "ogTitle": "Chirag Singh — Ingeniero de IA",
+    "ogDescription": "GenAI y Full-Stack. Sistemas LLM en producción — retrieval, evals, serving."
+  },
+  "header": {
+    "name": "chirag_singh",
+    "role": "ai_engineer",
+    "navSystems": "sistemas",
+    "navWork": "trabajos",
+    "navStack": "stack",
+    "themeLeverTitle": "arrastra para cambiar el color",
+    "themeToggleTitle": "cambiar claro / oscuro"
+  },
+  "languageSwitcher": {
+    "label": "idioma"
+  },
+  "hero": {
+    "availableForWork": "disponible para trabajar",
+    "roleTag": "Ingeniero de IA — GenAI y Full-Stack",
+    "firstName": "Chirag",
+    "lastName": "Singh",
+    "introLead": "Construyo y opero",
+    "introAccent": "sistemas LLM en producción",
+    "introMid": "— retrieval, evals y serving que aguantan carga real.",
+    "introMuted": "Menos demo, más infraestructura.",
+    "ctaWork": "trabajo seleccionado →",
+    "ctaGithub": "github ↗",
+    "ctaResume": "resume.json ↓",
+    "statYearsUnit": "años",
+    "statYearsLabel": "en ingeniería de IA",
+    "statProjectsLabel": "proyectos entregados",
+    "statPublicationsLabel": "publicación",
+    "terminalWindowTitle": "~/chirag — zsh",
+    "terminalWhoamiCmd": "whoami",
+    "terminalWhoamiOutput": "chirag — ai engineer",
+    "terminalRoleCmd": "cat role.json",
+    "terminalStatus": "online",
+    "terminalHint": "escribe <fg>whoami</fg> donde sea ↵"
+  },
+  "footer": {
+    "heading": "Construyamos.",
+    "linkEmail": "correo",
+    "linkGithub": "github",
+    "linkLeetcode": "leetcode",
+    "linkLinkedin": "linkedin",
+    "linkX": "x",
+    "operational": "todos los sistemas operativos",
+    "timezone": "IST",
+    "buildLabel": "build",
+    "deployedLabel": "desplegado",
+    "deployedAgo": "hoy",
+    "copyright": "© {year} chirag singh · hecho a mano, no con plantillas"
+  },
+  "cursor": {
+    "view": "ver",
+    "open": "abrir",
+    "download": "descargar",
+    "expand": "ampliar",
+    "chat": "chat",
+    "close": "cerrar",
+    "drag": "arrastrar",
+    "select": "elegir",
+    "toggle": "cambiar"
+  }
+}

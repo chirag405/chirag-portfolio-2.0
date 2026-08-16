@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "Chirag Singh — Ingénieur IA",
+    "description": "Chirag Singh — Ingénieur IA. GenAI et Full-Stack. Systèmes LLM en production.",
+    "ogTitle": "Chirag Singh — Ingénieur IA",
+    "ogDescription": "GenAI et Full-Stack. Systèmes LLM en production — retrieval, evals, serving."
+  },
+  "header": {
+    "name": "chirag_singh",
+    "role": "ai_engineer",
+    "navSystems": "systèmes",
+    "navWork": "projets",
+    "navStack": "stack",
+    "themeLeverTitle": "glisser pour changer la teinte",
+    "themeToggleTitle": "basculer clair / sombre"
+  },
+  "languageSwitcher": {
+    "label": "langue"
+  },
+  "hero": {
+    "availableForWork": "disponible pour travailler",
+    "roleTag": "Ingénieur IA — GenAI et Full-Stack",
+    "firstName": "Chirag",
+    "lastName": "Singh",
+    "introLead": "Je construis et j'exploite des",
+    "introAccent": "systèmes LLM en production",
+    "introMid": "— retrieval, evals et serving qui tiennent sous charge réelle.",
+    "introMuted": "Moins de démo, plus d'infrastructure.",
+    "ctaWork": "projets sélectionnés →",
+    "ctaGithub": "github ↗",
+    "ctaResume": "resume.json ↓",
+    "statYearsUnit": "ans",
+    "statYearsLabel": "en ingénierie IA",
+    "statProjectsLabel": "projets livrés",
+    "statPublicationsLabel": "publication",
+    "terminalWindowTitle": "~/chirag — zsh",
+    "terminalWhoamiCmd": "whoami",
+    "terminalWhoamiOutput": "chirag — ai engineer",
+    "terminalRoleCmd": "cat role.json",
+    "terminalStatus": "online",
+    "terminalHint": "tapez <fg>whoami</fg> n'importe où ↵"
+  },
+  "footer": {
+    "heading": "Construisons.",
+    "linkEmail": "email",
+    "linkGithub": "github",
+    "linkLeetcode": "leetcode",
+    "linkLinkedin": "linkedin",
+    "linkX": "x",
+    "operational": "tous les systèmes opérationnels",
+    "timezone": "IST",
+    "buildLabel": "build",
+    "deployedLabel": "déployé",
+    "deployedAgo": "aujourd'hui",
+    "copyright": "© {year} chirag singh · fait à la main, pas de template"
+  },
+  "cursor": {
+    "view": "voir",
+    "open": "ouvrir",
+    "download": "télécharger",
+    "expand": "détails",
+    "chat": "chat",
+    "close": "fermer",
+    "drag": "glisser",
+    "select": "choisir",
+    "toggle": "basculer"
+  }
+}

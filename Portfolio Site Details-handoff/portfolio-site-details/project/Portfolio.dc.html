@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chirag Singh — AI Engineer</title>
+<meta name="description" content="Chirag Singh — AI Engineer. GenAI & Full-Stack. LLM systems in production.">
+<meta property="og:title" content="Chirag Singh — AI Engineer">
+<meta property="og:description" content="GenAI & Full-Stack. LLM systems in production — retrieval, evals, serving.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Crect x='6' y='14' width='20' height='2.4' fill='%232f6bff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  :root{
+    --bg:#FAFAF8; --fg:#0A0A0A; --muted:#6b6b64; --faint:#9a9a92;
+    --line:rgba(10,10,10,.10); --line2:rgba(10,10,10,.06);
+    --card:#ffffff;
+    --accent:oklch(.58 .21 258); --accent-weak:oklch(.58 .21 258 / .12); --accent-ghost:oklch(.58 .21 258 / .045);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font-family:'IBM Plex Mono',ui-monospace,monospace;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  ::selection{background:var(--accent-weak);color:var(--fg)}
+  a{color:var(--accent);text-decoration:none;transition:opacity .18s cubic-bezier(.2,.7,.2,1)}
+  a:hover{opacity:.62}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:var(--line);border-radius:0}
+  @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+  @keyframes shimmer{0%{background-position:-260px 0}100%{background-position:260px 0}}
+  @keyframes pulse{0%{transform:scale(1);opacity:.9}50%{transform:scale(1.35);opacity:.45}100%{transform:scale(1);opacity:.9}}
+  @keyframes slashSweep{0%{stroke-dashoffset:520;opacity:0}12%{opacity:1}70%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+  @keyframes flareUp{0%{opacity:0;transform:scaleX(.2)}30%{opacity:.9}100%{opacity:0;transform:scaleX(1)}}
+  @keyframes cutIn{0%{clip-path:inset(0 100% 0 0);opacity:0}18%{opacity:1}100%{clip-path:inset(0 0 0 0);opacity:1}}
+  @keyframes eggIn{0%{opacity:0;transform:translateY(8px) scale(.985)}100%{opacity:1;transform:none}}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  @keyframes popIn{0%{transform:scale(0);opacity:0}68%{transform:scale(1.22)}100%{transform:scale(1);opacity:1}}
+  @keyframes wordUp{0%{opacity:0;transform:translateY(115%)}100%{opacity:1;transform:none}}
+  @keyframes floatIn{0%{opacity:0;transform:translateY(20px) scale(.98)}60%{transform:translateY(-4px) scale(1.005)}100%{opacity:1;transform:none}}
+  #om-cursor{position:fixed;left:0;top:0;z-index:200;pointer-events:none;display:none;align-items:center;justify-content:center;width:14px;height:14px;border-radius:24px;background:var(--accent-weak);border:1px solid var(--accent);color:var(--fg);font-size:11px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;transition:width .22s cubic-bezier(.16,1,.3,1),height .22s cubic-bezier(.16,1,.3,1),background .22s ease,border-radius .22s ease;mix-blend-mode:normal;backdrop-filter:blur(2px)}
+  body.cur-none, body.cur-none *{cursor:none !important}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.04s !important}
+  }
+</style>
+</helmet>
+
+<div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,64px);position:relative">
+
+  <!-- top status bar -->
+  <div style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px;background:color-mix(in oklab, var(--bg) 82%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line2);margin:0 calc(-1 * clamp(20px,5vw,64px));padding:0 clamp(20px,5vw,64px)">
+    <div style="display:flex;align-items:center;gap:12px;font-size:12.5px;letter-spacing:.02em">
+      <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite;display:inline-block"></span>
+      <span style="color:var(--fg);font-weight:500">chirag_singh</span>
+      <span style="color:var(--faint)">·</span>
+      <span style="color:var(--muted)">ai_engineer</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:22px">
+      <nav style="display:flex;gap:20px;font-size:12.5px;color:var(--muted)">
+        <a href="#systems" style="color:var(--muted)">systems</a>
+        <a href="#work" style="color:var(--muted)">work</a>
+        <a href="#stack" style="color:var(--muted)">stack</a>
+      </nav>
+      <!-- theme lever -->
+      <div title="drag to retheme" style="display:flex;align-items:center;gap:0;height:20px">
+        <div ref="{{ trackRef }}" onPointerDown="{{ onLeverDown }}" style="position:relative;width:96px;height:20px;display:flex;align-items:center;cursor:ew-resize;touch-action:none">
+          <div style="position:absolute;left:0;right:0;height:1px;background:var(--line)"></div>
+          <div style="position:absolute;left:0;height:1px;width:{{ knobLeft }};background:var(--accent);transition:width .05s linear"></div>
+          <div style="position:absolute;left:{{ knobLeft }};transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-weak);transition:left .05s linear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section style="position:relative;display:grid;grid-template-columns:1.4fr .82fr;gap:clamp(28px,5vw,72px);align-items:end;padding:clamp(56px,10vh,116px) 0 clamp(40px,7vh,76px);border-bottom:1px solid var(--line)">
+    <div style="min-width:0">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:26px">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;border-radius:50%;background:oklch(.72 .15 165);box-shadow:0 0 0 3px oklch(.72 .15 165 / .18)"></span>available for work</span>
+        <span style="width:24px;height:1px;background:var(--line)"></span>
+        <span>AI Engineer — GenAI &amp; Full-Stack</span>
+      </div>
+      <h1 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;line-height:.88;letter-spacing:-.015em;font-size:clamp(64px,11.5vw,156px)">
+        <span style="display:block;overflow:hidden"><span style="display:inline-block;animation:wordUp .7s cubic-bezier(.16,1,.3,1) both;animation-delay:.05s">Chirag</span></span>
+        <span style="display:block;overflow:hidden"><span style="display:inline-block;animation:wordUp .7s cubic-bezier(.16,1,.3,1) both;animation-delay:.16s">Singh<span style="color:var(--accent)">.</span></span></span>
+      </h1>
+      <p style="max-width:46ch;margin:32px 0 0;font-size:15px;line-height:1.72;color:var(--fg)">I build and operate <span style="color:var(--accent)">LLM systems in production</span> — retrieval, evals, and serving that hold up under real load. <span style="color:var(--muted)">Less demo, more infrastructure.</span></p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:32px;font-size:12.5px">
+        <a href="#work" data-cursor="view" style="border:1px solid var(--accent);background:var(--accent);color:var(--bg);padding:9px 15px">selected work →</a>
+        <a href="https://github.com/chirag405" data-cursor="open" style="border:1px solid var(--line);padding:9px 14px;color:var(--fg)">github ↗</a>
+        <a href="#resume" data-cursor="download" onClick="{{ downloadResume }}" style="border:1px solid var(--line);padding:9px 14px;color:var(--fg)">resume.json ↓</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0 34px;margin-top:44px">
+        <div style="padding-right:34px;border-right:1px solid var(--line2)"><div style="font-family:'Instrument Serif',serif;font-size:32px;line-height:1">1.8<span style="font-size:15px;color:var(--muted)"> yrs</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:4px">engineering AI</div></div>
+      <div style="padding-right:34px;border-right:1px solid var(--line2)"><div style="font-family:'Instrument Serif',serif;font-size:32px;line-height:1">9</div><div style="font-size:10.5px;color:var(--muted);margin-top:4px">shipped projects</div></div>
+        <div><div style="font-family:'Instrument Serif',serif;font-size:32px;line-height:1">1</div><div style="font-size:10.5px;color:var(--muted);margin-top:4px">publication</div></div>
+      </div>
+    </div>
+
+    <!-- terminal whoami -->
+    <div style="min-width:0;border:1px solid var(--line);background:var(--card)">
+      <div style="display:flex;align-items:center;gap:7px;padding:9px 12px;border-bottom:1px solid var(--line2)">
+        <span style="width:9px;height:9px;border-radius:50%;background:var(--line)"></span>
+        <span style="width:9px;height:9px;border-radius:50%;background:var(--line)"></span>
+        <span style="width:9px;height:9px;border-radius:50%;background:var(--line)"></span>
+        <span style="margin-left:6px;font-size:11px;color:var(--faint)">~/chirag — zsh</span>
+      </div>
+      <div style="padding:16px 16px 18px;font-size:12.5px;line-height:1.85">
+        <div><span style="color:var(--accent)">$</span> whoami</div>
+        <div style="color:var(--fg)">{{ whoami }}<span style="display:inline-block;width:7px;height:14px;background:var(--accent);vertical-align:-2px;margin-left:2px;animation:blink 1s step-end infinite"></span></div>
+        <div style="margin-top:10px"><span style="color:var(--accent)">$</span> cat role.json</div>
+        <div style="color:var(--muted);white-space:pre-wrap">{
+  "focus": ["genai","full-stack"],
+  "ships": "llm systems in prod",
+  "based": "IN",
+  "status": <span style="color:var(--accent)">"online"</span>
+}</div>
+        <div style="margin-top:10px;color:var(--faint)">$ <span style="opacity:.6">type</span> <span style="color:var(--fg)">whoami</span> <span style="opacity:.6">anywhere ↵</span></div>
+      </div>
+    </div>
+
+    <!-- signature slash flourish overlay -->
+    <sc-if value="{{ flourish }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;inset:0;pointer-events:none;z-index:5;overflow:hidden">
+        <div style="position:absolute;left:2%;top:58%;width:62%;height:3px;background:var(--accent);transform-origin:left center;filter:blur(1px);animation:flareUp .62s cubic-bezier(.16,1,.3,1) both;box-shadow:0 0 22px 4px var(--accent-weak)"></div>
+        <svg viewBox="0 0 600 300" preserveAspectRatio="none" style="position:absolute;left:0;top:0;width:70%;height:100%;overflow:visible">
+          <path d="M8 250 L520 40" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="520" style="animation:slashSweep .72s cubic-bezier(.16,1,.3,1) both;filter:drop-shadow(0 0 6px var(--accent))"></path>
+        </svg>
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- LIVE SYSTEMS -->
+  <section id="systems" data-reveal style="padding:clamp(48px,8vh,92px) 0 clamp(40px,6vh,72px);border-bottom:1px solid var(--line)">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:30px">
+      <div style="font-size:12.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase">// live systems</div>
+      <div style="font-size:11.5px;color:var(--faint)">synced {{ syncedAgo }}<span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;margin-left:8px;animation:pulse 2.4s ease-in-out infinite;vertical-align:1px"></span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px">
+      <!-- github card -->
+      <div style="grid-column:1 / -1;border:1px solid var(--line);background:var(--card)">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line2)">
+          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px"><span style="color:var(--muted)">github.com/</span><span style="font-weight:500">chirag405</span></div>
+          <a href="https://github.com/chirag405" style="font-size:11.5px;color:var(--muted)">open ↗</a>
+        </div>
+        <div style="padding:18px">
+          <div style="display:flex;flex-wrap:wrap;gap:24px 40px;margin-bottom:20px">
+            <div><div style="font-size:26px;font-family:'Instrument Serif',serif">{{ gh.contribs }}</div><div style="font-size:11px;color:var(--muted);margin-top:2px">contributions · 1y</div></div>
+            <div><div style="font-size:26px;font-family:'Instrument Serif',serif">{{ gh.repos }}</div><div style="font-size:11px;color:var(--muted);margin-top:2px">public repos</div></div>
+            <div><div style="font-size:26px;font-family:'Instrument Serif',serif">{{ gh.stars }}</div><div style="font-size:11px;color:var(--muted);margin-top:2px">stars earned</div></div>
+            <div><div style="font-size:26px;font-family:'Instrument Serif',serif">{{ gh.streak }}</div><div style="font-size:11px;color:var(--muted);margin-top:2px">day streak</div></div>
+          </div>
+          <div style="min-height:104px">{{ contribGrid }}</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:22px">
+            <div>
+              <div style="font-size:11px;color:var(--muted);margin-bottom:10px">top languages</div>
+              {{ langBar }}
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--muted);margin-bottom:10px">recent commits</div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <sc-for list="{{ gh.commits }}" as="c" hint-placeholder-count="3">
+                  <div style="display:flex;gap:10px;font-size:12px;line-height:1.35">
+                    <span style="color:var(--accent);flex:none">{{ c.hash }}</span>
+                    <span style="color:var(--fg);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.msg }}</span>
+                    <span style="color:var(--faint);flex:none;margin-left:auto">{{ c.when }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- leetcode card -->
+      <div style="border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line2)">
+          <div style="font-size:12.5px"><span style="color:var(--muted)">leetcode/</span><span style="font-weight:500">chirag405</span></div>
+          <a href="https://leetcode.com/chirag405" style="font-size:11.5px;color:var(--muted)">open ↗</a>
+        </div>
+        <div style="padding:18px;display:flex;gap:20px;align-items:center">
+          {{ leetDonut }}
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px"><span style="color:oklch(.72 .15 165)">easy</span><span>{{ lc.easy }}</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px"><span style="color:oklch(.75 .15 75)">medium</span><span>{{ lc.medium }}</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px"><span style="color:oklch(.62 .21 25)">hard</span><span>{{ lc.hard }}</span></div>
+            <div style="height:1px;background:var(--line2);margin:2px 0"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px"><span style="color:var(--muted)">streak</span><span>{{ lc.streak }}d</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- observability widget -->
+      <div style="border:1px solid var(--line);background:var(--card);position:relative;overflow:hidden">
+        <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(var(--accent-ghost) 1px,transparent 1px),linear-gradient(90deg,var(--accent-ghost) 1px,transparent 1px);background-size:26px 26px;pointer-events:none"></div>
+        <div style="position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line2)">
+          <div style="font-size:12.5px"><span style="color:var(--muted)">svc/</span><span style="font-weight:500">genai-support-bot</span></div>
+          <span style="font-size:11px;color:oklch(.72 .15 165);display:flex;align-items:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:oklch(.72 .15 165);animation:pulse 2.4s ease-in-out infinite"></span>healthy</span>
+        </div>
+        <div style="position:relative;padding:18px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 14px">
+            <div><div style="font-size:22px;letter-spacing:-.01em">{{ obs.tokens }}</div><div style="font-size:10.5px;color:var(--muted);margin-top:3px">tokens processed · 24h</div></div>
+            <div><div style="font-size:22px;letter-spacing:-.01em">{{ obs.calls }}</div><div style="font-size:10.5px;color:var(--muted);margin-top:3px">api calls · 24h</div></div>
+            <div><div style="font-size:22px;letter-spacing:-.01em">{{ obs.cost }}</div><div style="font-size:10.5px;color:var(--muted);margin-top:3px">cost / query</div></div>
+            <div><div style="font-size:22px;letter-spacing:-.01em">{{ obs.p95 }}<span style="font-size:12px;color:var(--muted)">ms</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:3px">p95 latency</div></div>
+          </div>
+          <div style="margin-top:16px">
+            <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);margin-bottom:6px"><span>throughput · tok/s</span><span>updated {{ obs.updated }}</span></div>
+            {{ throughputSpark }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:10.5px;color:var(--faint);margin-top:14px">// stats mocked to real API shape — wire GitHub / LeetCode / OTel endpoints to go live</div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" data-reveal style="padding:clamp(48px,8vh,92px) 0;border-bottom:1px solid var(--line)">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:38px">
+      <div style="font-size:12.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase">// experience</div>
+      <div style="font-size:11px;color:var(--faint)">click a role for detail</div>
+    </div>
+    <div style="position:relative;padding-left:clamp(20px,4vw,44px)">
+      <div ref="{{ lineRef }}" style="position:absolute;left:clamp(4px,1vw,10px);top:6px;bottom:6px;width:1px;background:var(--line);transform-origin:top center;transform:scaleY(0);transition:transform .9s cubic-bezier(.16,1,.3,1)"></div>
+      <sc-for list="{{ exps }}" as="e" hint-placeholder-count="2">
+        <div onClick="{{ e.open }}" data-cursor="expand" style="position:relative;padding:20px 20px 22px;margin-bottom:14px;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:transform .35s cubic-bezier(.34,1.56,.64,1),border-color .25s ease,background .25s ease" style-hover="transform:translateX(6px);border-color:var(--accent);background:var(--accent-ghost)">
+          <div style="position:absolute;left:calc(-1 * clamp(20px,4vw,44px) + clamp(1px,1vw,7px));top:26px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--line)"></div>
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px">
+            <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px">
+              <span style="font-family:'Instrument Serif',serif;font-size:clamp(22px,3vw,30px);line-height:1">{{ e.title }}</span>
+              <span style="font-size:12px;color:var(--accent)">{{ e.org }}</span>
+            </div>
+            <span style="font-size:12px;color:var(--muted);white-space:nowrap">{{ e.period }}</span>
+          </div>
+          <p style="margin:11px 0 0;font-size:13px;color:var(--muted);max-width:66ch;line-height:1.65">{{ e.summary }}</p>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:16px">
+            <sc-for list="{{ e.stack }}" as="t" hint-placeholder-count="3"><span style="font-size:10.5px;color:var(--muted);border:1px solid var(--line);padding:3px 8px">{{ t }}</span></sc-for>
+            <span style="font-size:11px;color:var(--accent);margin-left:auto">details +</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" data-reveal style="padding:clamp(48px,8vh,92px) 0;border-bottom:1px solid var(--line)">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:30px">
+      <div style="font-size:12.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase">// selected work</div>
+      <div style="font-size:11px;color:var(--faint)">9 placeholders — swap in real projects</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="9">
+        <a href="{{ p.href }}" data-cursor="open" style="background:var(--card);padding:14px 14px 18px;display:flex;flex-direction:column;gap:14px;color:var(--fg);transition:background .25s cubic-bezier(.2,.7,.2,1)" style-hover="background:var(--accent-ghost)">
+          <div style="position:relative;aspect-ratio:16/10;background:var(--bg);border:1px solid var(--line2);overflow:hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:22px;display:flex;align-items:center;gap:5px;padding:0 9px;background:var(--card);border-bottom:1px solid var(--line2);z-index:2">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--line)"></span>
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--line)"></span>
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--line)"></span>
+              <span style="margin-left:6px;font-size:9.5px;color:var(--faint)">{{ p.slug }}</span>
+            </div>
+            <div style="position:absolute;top:22px;left:0;right:0;bottom:0">
+              <image-slot id="{{ p.slot }}" shape="rect" placeholder="drop app screenshot"></image-slot>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px;padding:2px 6px 0">
+            <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:11px;color:var(--faint)">{{ p.no }}</span><span style="font-size:11px;color:var(--muted)">{{ p.kind }}</span></div>
+            <div style="font-family:'Instrument Serif',serif;font-size:26px;line-height:1;letter-spacing:-.01em">{{ p.name }}</div>
+            <div style="font-size:12.5px;color:var(--muted);line-height:1.55;min-height:40px">{{ p.impact }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="3"><span style="font-size:10.5px;color:var(--muted);border:1px solid var(--line);padding:3px 7px">{{ t }}</span></sc-for>
+            </div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section data-reveal style="padding:clamp(48px,8vh,92px) 0;border-bottom:1px solid var(--line)">
+    <div style="font-size:12.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:30px">// publications</div>
+    <div style="display:grid;grid-template-columns:34px 1fr;gap:clamp(16px,4vw,40px);max-width:920px">
+      <div style="font-family:'Instrument Serif',serif;font-size:30px;color:var(--accent);line-height:1">[1]</div>
+      <div style="border-left:1px solid var(--line);padding-left:clamp(16px,3vw,32px)">
+        <p style="margin:0;font-family:'Instrument Serif',serif;font-size:clamp(20px,2.4vw,27px);line-height:1.32">Plate Vision: A Number Plate Recognition Using AI/ML and YOLOv8</p>
+        <p style="margin:14px 0 0;font-size:13px;color:var(--muted);line-height:1.7">C. Singh <span style="color:var(--faint)">et al.</span> · <span style="font-style:italic">International Journal of Innovative Research in Computer and Communication Engineering (IJIRCCE)</span> · Vol. 13, Issue 5 · May 2025.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:16px;font-size:12px;color:var(--muted)">
+          <span>Impact Factor <span style="color:var(--fg)">8.771</span></span>
+          <span>ISSN <span style="color:var(--fg)">2320-9801</span></span>
+          <a href="#publication" style="color:var(--accent)">view paper ↗ <span style="color:var(--faint)">// add link</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack" data-reveal style="padding:clamp(48px,8vh,92px) 0;border-bottom:1px solid var(--line)">
+    <div style="font-size:12.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:36px">// stack</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:34px 40px">
+      <sc-for list="{{ skills }}" as="g" hint-placeholder-count="5">
+        <div>
+          <div style="font-size:12px;color:var(--accent);margin-bottom:14px">{{ g.cat }}</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="5">
+              <div style="font-size:13px;color:var(--fg);display:flex;align-items:center;gap:9px"><span style="width:4px;height:4px;background:var(--line);flex:none"></span>{{ s }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- FOOTER STATUS -->
+  <footer style="padding:clamp(40px,7vh,80px) 0 40px">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end">
+      <div>
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(30px,5vw,54px);line-height:1;letter-spacing:-.01em">Let's build.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:24px;font-size:12.5px">
+          <a href="mailto:hello@chirag.dev" style="border:1px solid var(--line);padding:8px 13px;color:var(--fg)">email</a>
+          <a href="https://github.com/chirag405" style="border:1px solid var(--line);padding:8px 13px;color:var(--fg)">github</a>
+          <a href="https://leetcode.com/chirag405" style="border:1px solid var(--line);padding:8px 13px;color:var(--fg)">leetcode</a>
+          <a href="https://www.linkedin.com/in/chirag404/" style="border:1px solid var(--line);padding:8px 13px;color:var(--fg)">linkedin</a>
+          <a href="https://x.com/chirag405" style="border:1px solid var(--line);padding:8px 13px;color:var(--fg)">x</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin-top:44px;padding-top:16px;border-top:1px solid var(--line2);font-size:11px;color:var(--faint)">
+      <span style="display:flex;align-items:center;gap:7px"><span style="width:6px;height:6px;border-radius:50%;background:oklch(.72 .15 165)"></span>all systems operational</span>
+      <span>·</span>
+      <span>{{ clock }} {{ tz }}</span>
+      <span>·</span>
+      <span>build <span style="color:var(--muted)">{{ buildHash }}</span></span>
+      <span>·</span>
+      <span>deployed {{ deployedAgo }}</span>
+      <span style="margin-left:auto">© 2026 chirag singh · crafted, not templated</span>
+    </div>
+  </footer>
+
+  <!-- CHATBOT -->
+  <div style="position:fixed;right:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,28px);z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+    <sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="width:min(340px,86vw);height:440px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;box-shadow:0 12px 40px -12px rgba(10,10,10,.18);animation:eggIn .3s cubic-bezier(.16,1,.3,1) both">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line2)">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite"></span>ask_chirag</div>
+          <button onClick="{{ toggleChat }}" style="border:none;background:none;color:var(--muted);cursor:pointer;font-family:inherit;font-size:14px;padding:2px 6px">✕</button>
+        </div>
+        <div ref="{{ chatScrollRef }}" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;font-size:12.5px;line-height:1.55">
+          <sc-for list="{{ chatMessages }}" as="m" hint-placeholder-count="1">
+            <div style="align-self:{{ m.align }};max-width:82%;padding:9px 11px;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.color }};white-space:pre-wrap">{{ m.text }}</div>
+          </sc-for>
+          <sc-if value="{{ chatTyping }}" hint-placeholder-val="{{ false }}">
+            <div style="align-self:flex-start;color:var(--faint);font-size:12px">thinking<span style="animation:blink 1s step-end infinite">…</span></div>
+          </sc-if>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px">
+          <sc-for list="{{ chatSuggest }}" as="q" hint-placeholder-count="3">
+            <button onClick="{{ q.onClick }}" style="font-size:10.5px;color:var(--muted);border:1px solid var(--line);background:none;padding:4px 8px;cursor:pointer;font-family:inherit">{{ q.label }}</button>
+          </sc-for>
+        </div>
+        <form onSubmit="{{ sendChat }}" style="display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line2)">
+          <input value="{{ chatInput }}" onInput="{{ onChatInput }}" placeholder="ask about my work…" style="flex:1;min-width:0;border:none;background:none;outline:none;font-family:inherit;font-size:12.5px;color:var(--fg)">
+          <button type="submit" style="border:1px solid var(--accent);background:none;color:var(--accent);cursor:pointer;font-family:inherit;font-size:12px;padding:4px 11px">↵</button>
+        </form>
+      </div>
+    </sc-if>
+    <div style="display:flex;align-items:flex-end;gap:8px">
+      <sc-if value="{{ petHint }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-bottom:14px;font-size:11px;color:var(--fg);background:var(--card);border:1px solid var(--line);padding:6px 10px;white-space:nowrap;animation:eggIn .3s cubic-bezier(.16,1,.3,1) both;box-shadow:0 6px 20px -10px rgba(10,10,10,.25)">ask me anything ↗</div>
+      </sc-if>
+      <button onClick="{{ toggleChat }}" data-cursor="chat" title="ask me anything" style="border:none;background:none;cursor:pointer;padding:0;line-height:0;filter:drop-shadow(0 6px 14px rgba(10,10,10,.18))">
+        <span style="display:inline-block;animation:bob 2.6s ease-in-out infinite">{{ pet }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- CUSTOM CURSOR -->
+  <div id="om-cursor" ref="{{ cursorRef }}"><sc-if value="{{ cursorLabel }}" hint-placeholder-val="{{ false }}"><span style="padding:0 2px">{{ cursorLabel }}</span></sc-if></div>
+
+  <!-- EXPERIENCE MODAL -->
+  <sc-if value="{{ expOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeExp }}" style="position:fixed;inset:0;z-index:82;background:rgba(10,10,10,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px">
+      <div onClick="{{ stop }}" style="width:min(560px,94vw);max-height:86vh;overflow-y:auto;border:1px solid var(--line);background:var(--card);animation:floatIn .4s cubic-bezier(.16,1,.3,1) both">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line2);position:sticky;top:0;background:var(--card)">
+          <span style="font-size:11px;color:var(--muted)">{{ expDetail.period }}</span>
+          <button onClick="{{ closeExp }}" data-cursor="close" style="border:none;background:none;color:var(--muted);cursor:pointer;font-family:inherit;font-size:15px">✕</button>
+        </div>
+        <div style="padding:22px 24px 26px">
+          <div style="font-family:'Instrument Serif',serif;font-size:clamp(26px,4vw,38px);line-height:1.05;letter-spacing:-.01em">{{ expDetail.title }}</div>
+          <div style="font-size:13px;color:var(--accent);margin-top:6px">{{ expDetail.org }}</div>
+          <p style="margin:18px 0 0;font-size:13.5px;color:var(--muted);line-height:1.7">{{ expDetail.summary }}</p>
+          <div style="font-size:11px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase;margin:24px 0 12px">what I did</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <sc-for list="{{ expDetail.details }}" as="d" hint-placeholder-count="4">
+              <div style="display:flex;gap:11px;font-size:13px;color:var(--fg);line-height:1.55"><span style="color:var(--accent);flex:none">→</span><span>{{ d }}</span></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line2)">
+            <sc-for list="{{ expDetail.stack }}" as="t" hint-placeholder-count="4"><span style="font-size:11px;color:var(--muted);border:1px solid var(--line);padding:4px 9px">{{ t }}</span></sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- EASTER EGG OVERLAY -->
+  <sc-if value="{{ eggOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeEgg }}" style="position:fixed;inset:0;z-index:80;background:rgba(10,10,10,.55);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px">
+      <div onClick="{{ stop }}" style="width:min(520px,94vw);border:1px solid var(--accent);background:#0A0A0A;color:#FAFAF8;animation:eggIn .32s cubic-bezier(.16,1,.3,1) both">
+        <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.12)">
+          <span style="width:9px;height:9px;border-radius:50%;background:var(--accent)"></span>
+          <span style="font-size:11px;color:rgba(255,255,255,.55)">whoami — unlocked</span>
+          <button onClick="{{ closeEgg }}" style="margin-left:auto;border:none;background:none;color:rgba(255,255,255,.55);cursor:pointer;font-family:inherit">✕</button>
+        </div>
+        <pre style="margin:0;padding:20px;font-family:inherit;font-size:12.5px;line-height:1.7;white-space:pre-wrap;color:#e8e8e2">{{ resumeJson }}</pre>
+        <div style="padding:0 20px 20px"><a href="#resume" onClick="{{ downloadResume }}" style="color:var(--accent);font-size:12.5px">↓ download resume.json</a></div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = {
+    flourish: true, hue: 258, knobPct: .55,
+    whoami: "", clock: "", chatOpen: false, chatInput: "",
+    chatMessages: [{ from:"bot", text:"hey — ask me anything about chirag's work, projects, or stack." }],
+    chatTyping: false, eggOpen: false, expOpen: null, petHint: false,
+    cursorLabel: "",
+    gh: { contribs:0, repos:0, stars:0, streak:0 },
+    obs: { tokens:0, calls:0, cost:0, p95:0 },
+    tick: 0
+  };
+
+  full = { contribs: 1284, repos: 37, stars: 412, streak: 46 };
+  fullObs = { tokens: 4.28, calls: 18240, cost: 0.0031, p95: 842 };
+
+  trackRef = React.createRef();
+  chatScrollRef = React.createRef();
+  lineRef = React.createRef();
+  cursorRef = React.createRef();
+
+  exps = [
+    { period:"2024 — present", title:"Associate GenAI & Full-Stack Engineer", org:"@ Incerro",
+      summary:"Building and shipping GenAI features end-to-end — retrieval, model serving, and the full-stack surfaces around them.",
+      details:["Owned RAG pipeline: retrieval → reranking → eval gating before responses ship","Model serving on vLLM / Triton under explicit latency budgets","Full-stack surfaces in Next.js + FastAPI, prompt/version tooling","// placeholder — swap in your real bullets & metrics"],
+      stack:["Python","vLLM","FastAPI","Next.js","Postgres"] },
+    { period:"2020 — 2024", title:"Flutter Developer", org:"· internship · 4 yrs",
+      summary:"Cross-platform mobile development in Dart/Flutter, concurrent with undergraduate studies.",
+      details:["Shipped cross-platform apps in Flutter / Dart","Built reusable widget systems + state management","Integrated REST / gRPC backends and offline caching","// placeholder — confirm org & exact dates"],
+      stack:["Flutter","Dart","gRPC","Firebase"] }
+  ];
+
+  // pixel pet bitmap (9w x 9h) — c=chassis, w=face, a=accent eyes, k=dark, .=empty
+  petMatrix = [
+    "....a....",
+    "....k....",
+    "..ccccc..",
+    ".ccwwwcc.",
+    ".cwakawc.",
+    ".cwwwwwc.",
+    ".cwkkkwc.",
+    ".ccwwwcc.",
+    "..cc.cc.."
+  ];
+  petColors = { c:"#0A0A0A", w:"#FAFAF8", k:"#0A0A0A", a:"var(--accent)" };
+
+  projects = [
+    { no:"01", kind:"rag", name:"Relay", impact:"Grounded support agent — cut hallucinated answers ~62% with reranked retrieval + eval gating.", tags:["Python","vLLM","pgvector"], href:"#" },
+    { no:"02", kind:"infra", name:"Ledger", impact:"LLM cost/latency observability — per-query token accounting across 4 model providers.", tags:["FastAPI","OTel","ClickHouse"], href:"#" },
+    { no:"03", kind:"agents", name:"Prism", impact:"Tool-calling workflow engine — deterministic replays for multi-step agent runs.", tags:["TypeScript","LangGraph"], href:"#" },
+    { no:"04", kind:"eval", name:"Sift", impact:"Offline eval harness — golden sets + LLM-judge with human calibration loop.", tags:["Python","pytest","Ragas"], href:"#" },
+    { no:"05", kind:"vision", name:"Plate Vision", impact:"Real-time number-plate recognition — YOLOv8 pipeline, published in IJIRCCE '25.", tags:["YOLOv8","OpenCV"], href:"#publication" },
+    { no:"06", kind:"full-stack", name:"Harbor", impact:"Self-serve prompt/version console — ship prompt changes without a redeploy.", tags:["Next.js","tRPC","Postgres"], href:"#" },
+    { no:"07", kind:"serving", name:"Quanta", impact:"Speculative-decoding gateway — ~1.9× throughput on the same GPU budget.", tags:["Triton","CUDA"], href:"#" },
+    { no:"08", kind:"mobile", name:"Loom", impact:"On-device assistant — streaming responses in a Flutter client, offline fallback.", tags:["Flutter","Dart","gRPC"], href:"#" },
+    { no:"09", kind:"data", name:"Vector", impact:"Embedding ingestion pipeline — dedup + chunking that halved index size.", tags:["Airflow","Qdrant"], href:"#" }
+  ];
+
+  skills = [
+    { cat:"LLMs / GenAI", items:["RAG & retrieval","Agents & tool-use","Prompt & eval design","Fine-tuning / LoRA","vLLM · Triton"] },
+    { cat:"ML", items:["PyTorch","YOLOv8 · OpenCV","Embeddings","Classical ML"] },
+    { cat:"Backend", items:["Python · FastAPI","Node · tRPC","Postgres · pgvector","ClickHouse · Redis"] },
+    { cat:"Frontend", items:["Next.js · React","TypeScript","Flutter · Dart"] },
+    { cat:"Infra / Tools", items:["Docker · K8s","OpenTelemetry","AWS · GCP","CI/CD · Git"] }
+  ];
+
+  lc = { easy: 148, medium: 262, hard: 71, streak: 46 };
+  langs = [
+    { name:"Python", pct:46, hue:258 },
+    { name:"TypeScript", pct:27, hue:210 },
+    { name:"Dart", pct:14, hue:170 },
+    { name:"Rust", pct:8, hue:30 },
+    { name:"Other", pct:5, hue:0 }
+  ];
+  commits = [
+    { hash:"a3f9c1", msg:"feat(relay): rerank cutoff + eval gate", when:"2h" },
+    { hash:"7b2e00", msg:"perf(quanta): batch speculative draft", when:"9h" },
+    { hash:"e41d8a", msg:"fix(ledger): p95 bucket rounding", when:"1d" },
+    { hash:"c09f22", msg:"chore: bump vllm 0.6.x", when:"2d" }
+  ];
+  sparkData = [12,18,15,22,19,28,24,31,26,34,30,38,33,41,37,44,40,47,43,52,48,44,50,46];
+
+  componentDidMount(){
+    // console signature
+    try {
+      const s1="color:#2f6bff;font:600 13px/1.5 monospace";
+      const s2="color:#888;font:12px/1.5 monospace";
+      console.log("%c chirag_singh %c ai engineer — genai & full-stack","background:#0A0A0A;color:#FAFAF8;padding:3px 8px;font:600 12px monospace","");
+      console.log("%cyou opened devtools. good instinct.%c\n→ github.com/chirag405   ↵ type 'whoami' on the page for the raw resume",s1,s2);
+    } catch(e){}
+
+    this.applyHue(this.state.hue);
+
+    // typed whoami
+    const target="chirag — ai engineer";
+    let i=0;
+    this.typeInt=setInterval(()=>{
+      i++; this.setState({ whoami: target.slice(0,i) });
+      if(i>=target.length) clearInterval(this.typeInt);
+    },42);
+
+    // clock
+    this.tickClock();
+    this.clockInt=setInterval(()=>this.tickClock(),1000);
+
+    // flourish unmount
+    this.flTimer=setTimeout(()=>this.setState({flourish:false}),1000);
+
+    // reveals
+    const rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const els = Array.from(document.querySelectorAll("[data-reveal]"));
+    if(rm){ els.forEach(el=>{ el.style.opacity=1; }); if(this.lineRef.current) this.lineRef.current.style.transform="scaleY(1)"; }
+    else {
+      els.forEach(el=>{ el.style.opacity="0"; el.style.transform="translateY(16px)"; el.style.transition="opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)"; });
+      const io=new IntersectionObserver((ents)=>{
+        ents.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity="1"; e.target.style.transform="none"; io.unobserve(e.target);
+          if(e.target.id==="systems") this.animateStats();
+          if(e.target.id==="experience" && this.lineRef.current) this.lineRef.current.style.transform="scaleY(1)"; } });
+      },{threshold:.14});
+      els.forEach(el=>io.observe(el));
+      this.io=io;
+      // if systems already in view on load
+      setTimeout(()=>{ if(!this.statsRan){ const s=document.getElementById("systems"); if(s && s.getBoundingClientRect().top<window.innerHeight){ this.animateStats(); } } },300);
+    }
+
+    // easter egg: type "whoami"
+    this.buf="";
+    this.keyHandler=(e)=>{
+      const t=e.target && e.target.tagName;
+      if(t==="INPUT"||t==="TEXTAREA") return;
+      if(e.key && e.key.length===1){ this.buf=(this.buf+e.key.toLowerCase()).slice(-8); if(this.buf.endsWith("whoami")){ this.setState({eggOpen:true}); } }
+      if(e.key==="Escape"){ this.setState({eggOpen:false, chatOpen:false}); }
+    };
+    window.addEventListener("keydown",this.keyHandler);
+
+    // pet hint peek
+    this.petTimer=setTimeout(()=>{ this.setState({petHint:true}); this.petTimer2=setTimeout(()=>this.setState({petHint:false}),4200); },2600);
+
+    // custom cursor (desktop, motion allowed only)
+    const fine = window.matchMedia && window.matchMedia("(pointer:fine)").matches;
+    if(fine && !rm){
+      this.cur={x:innerWidth/2,y:innerHeight/2}; this.curPos={...this.cur};
+      const c=this.cursorRef.current;
+      if(c){
+        document.body.classList.add("cur-none"); c.style.display="flex";
+        this.moveHandler=(ev)=>{ this.cur.x=ev.clientX; this.cur.y=ev.clientY;
+          const t=ev.target && ev.target.closest && ev.target.closest("[data-cursor]");
+          const lbl=t? t.getAttribute("data-cursor"):"";
+          if(lbl!==this.state.cursorLabel){ this.setState({cursorLabel:lbl});
+            c.style.width=lbl? "auto":"14px"; c.style.height=lbl?"26px":"14px";
+            c.style.padding=lbl?"0 12px":"0"; c.style.background=lbl?"var(--accent)":"var(--accent-weak)";
+            c.style.color=lbl?"var(--bg)":"var(--fg)"; }
+        };
+        window.addEventListener("mousemove",this.moveHandler);
+        const loop=()=>{ this.curPos.x+=(this.cur.x-this.curPos.x)*.2; this.curPos.y+=(this.cur.y-this.curPos.y)*.2;
+          c.style.transform=`translate(${this.curPos.x}px,${this.curPos.y}px) translate(-50%,-50%)`; this.raf=requestAnimationFrame(loop); };
+        loop();
+      }
+    }
+  }
+  componentWillUnmount(){
+    clearInterval(this.typeInt); clearInterval(this.clockInt); clearTimeout(this.flTimer);
+    clearTimeout(this.petTimer); clearTimeout(this.petTimer2);
+    if(this.io) this.io.disconnect();
+    if(this.raf) cancelAnimationFrame(this.raf);
+    if(this.moveHandler) window.removeEventListener("mousemove",this.moveHandler);
+    document.body.classList.remove("cur-none");
+    window.removeEventListener("keydown",this.keyHandler);
+  }
+
+  tickClock(){
+    const d=new Date();
+    const p=n=>String(n).padStart(2,"0");
+    this.setState({ clock:`${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}` });
+  }
+
+  animateStats(){
+    if(this.statsRan) return; this.statsRan=true;
+    const start=performance.now(), dur=1150;
+    const ease=t=>{ // slight overshoot spring
+      const c4=(2*Math.PI)/3;
+      return t===0?0:t===1?1: Math.pow(2,-9*t)*Math.sin((t*10-.75)*c4)+1;
+    };
+    const easeOut=t=>1-Math.pow(1-t,3);
+    const step=(now)=>{
+      const t=Math.min(1,(now-start)/dur);
+      const e=easeOut(t), sp=ease(t);
+      this.setState({
+        gh:{ contribs:Math.round(this.full.contribs*e), repos:Math.round(this.full.repos*sp), stars:Math.round(this.full.stars*e), streak:Math.round(this.full.streak*sp) },
+        obs:{ tokens:this.fullObs.tokens*e, calls:Math.round(this.fullObs.calls*e), cost:this.fullObs.cost, p95:Math.round(this.fullObs.p95*e) }
+      });
+      if(t<1) requestAnimationFrame(step);
+      else this.setState({ gh:{...this.full}, obs:{...this.fullObs} });
+    };
+    requestAnimationFrame(step);
+  }
+
+  applyHue(h){
+    const root=document.documentElement;
+    root.style.setProperty("--accent",`oklch(.58 .21 ${h})`);
+    root.style.setProperty("--accent-weak",`oklch(.58 .21 ${h} / .12)`);
+    root.style.setProperty("--accent-ghost",`oklch(.58 .21 ${h} / .045)`);
+  }
+  onLeverDown=(e)=>{
+    e.preventDefault();
+    const move=(ev)=>{
+      const el=this.trackRef.current; if(!el) return;
+      const r=el.getBoundingClientRect();
+      const x=(ev.touches? ev.touches[0].clientX : ev.clientX);
+      let pct=Math.max(0,Math.min(1,(x-r.left)/r.width));
+      const hue=Math.round(20+pct*300);
+      this.setState({knobPct:pct, hue}); this.applyHue(hue);
+    };
+    move(e);
+    const up=()=>{ window.removeEventListener("pointermove",move); window.removeEventListener("pointerup",up); };
+    window.addEventListener("pointermove",move); window.addEventListener("pointerup",up);
+  };
+
+  toggleChat=()=>this.setState(s=>({chatOpen:!s.chatOpen}));
+  onChatInput=(e)=>this.setState({chatInput:e.target.value});
+  stop=(e)=>{ e.stopPropagation(); };
+  closeEgg=()=>this.setState({eggOpen:false});
+  openExp=(i)=>()=>this.setState({expOpen:i});
+  closeExp=()=>this.setState({expOpen:null});
+
+  buildPet(){
+    const m=this.petMatrix, cell=5, cols=m[0].length, rows=m.length;
+    const rects=[];
+    for(let y=0;y<rows;y++) for(let x=0;x<cols;x++){ const ch=m[y][x]; if(ch===".") continue;
+      rects.push(this.el("rect",{key:x+"-"+y,x:x*cell,y:y*cell,width:cell,height:cell,fill:this.petColors[ch]})); }
+    return this.el("svg",{viewBox:`0 0 ${cols*cell} ${rows*cell}`,style:{width:"48px",height:"48px",display:"block",imageRendering:"pixelated",shapeRendering:"crispEdges"}},rects);
+  }
+
+  answerFor(qRaw){
+    const q=qRaw.toLowerCase();
+    const has=(...k)=>k.some(x=>q.includes(x));
+    if(has("experience","work at","incerro","incerro","job","role")) return "Currently Associate GenAI & Full-Stack Engineer @ Incerro (2024–now), building GenAI features end-to-end. Prior: 4-yr Flutter developer internship.";
+    if(has("project","built","relay","ledger","prism")) return "9 projects up top — e.g. Relay (grounded RAG agent, ~62% fewer hallucinations), Ledger (LLM cost/latency observability), and Quanta (speculative-decoding gateway, ~1.9× throughput).";
+    if(has("skill","stack","tech","language","tools")) return "Core stack: LLMs/GenAI (RAG, agents, vLLM/Triton), ML (PyTorch, YOLOv8), backend (Python/FastAPI, Postgres/pgvector), frontend (Next.js, Flutter), infra (Docker/K8s, OTel).";
+    if(has("publication","paper","plate","yolo","ijircce")) return "Published 'Plate Vision: Number Plate Recognition using AI/ML and YOLOv8' in IJIRCCE, Vol. 13 Issue 5, May 2025 (IF 8.771).";
+    if(has("leetcode","dsa","problem")) return `LeetCode: ${this.lc.easy+this.lc.medium+this.lc.hard} solved (${this.lc.easy} easy / ${this.lc.medium} med / ${this.lc.hard} hard), ${this.lc.streak}-day streak.`;
+    if(has("github","commit","repo")) return "GitHub @chirag405 — 37 public repos, ~1.28k contributions this year, 46-day streak. Recent work on Relay, Quanta and Ledger.";
+    if(has("contact","email","hire","reach","linkedin")) return "Reach out: linkedin.com/in/chirag404, github.com/chirag405, or email via the footer. Open to interesting LLM-in-prod problems.";
+    return "I can answer on experience, the 9 projects, the stack, the IJIRCCE publication, or GitHub/LeetCode stats. What are you curious about?";
+  }
+  pushAndAnswer(text){
+    if(!text.trim()) return;
+    this.setState(s=>({ chatMessages:[...s.chatMessages,{from:"user",text}], chatInput:"", chatTyping:true }), this.scrollChat);
+    const ans=this.answerFor(text);
+    clearTimeout(this.botTimer);
+    this.botTimer=setTimeout(()=>{
+      this.setState(s=>({ chatMessages:[...s.chatMessages,{from:"bot",text:ans}], chatTyping:false }), this.scrollChat);
+    }, 620);
+  }
+  sendChat=(e)=>{ e.preventDefault(); this.pushAndAnswer(this.state.chatInput); };
+  scrollChat=()=>{ const el=this.chatScrollRef.current; if(el) el.scrollTop=el.scrollHeight+999; };
+
+  downloadResume=(e)=>{
+    if(e) e.preventDefault();
+    const blob=new Blob([this.resumeJson()],{type:"application/json"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a"); a.href=url; a.download="chirag-singh.resume.json";
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+  };
+  resumeJson(){
+    return JSON.stringify({
+      name:"Chirag Singh", role:"AI Engineer — GenAI & Full-Stack",
+      focus:["llm systems in production","retrieval","evals","serving"],
+      experience:[
+        {title:"Associate GenAI & Full-Stack Engineer", org:"Incerro", period:"2024–present"},
+        {title:"Flutter Developer (internship)", period:"2020–2024", note:"4 yrs, concurrent"}
+      ],
+      publications:[{title:"Plate Vision: Number Plate Recognition using AI/ML and YOLOv8", venue:"IJIRCCE 13(5)", year:2025, impactFactor:8.771}],
+      links:{ github:"github.com/chirag405", leetcode:"leetcode.com/chirag405", linkedin:"linkedin.com/in/chirag404", x:"x.com/chirag405" }
+    },null,2);
+  }
+
+  // ---- viz builders ----
+  el(tag,props,...kids){ return React.createElement(tag,props,...kids); }
+
+  buildContribGrid(){
+    const weeks=52, days=7, cell=11, gap=3;
+    const rnd=(a,b)=>{ // deterministic-ish
+      let x=Math.sin(a*99.7+b*57.3)*10000; return x-Math.floor(x);
+    };
+    const cells=[];
+    for(let w=0; w<weeks; w++){
+      for(let d=0; d<days; d++){
+        const r=rnd(w,d);
+        const lvl = r>.82?4 : r>.66?3 : r>.45?2 : r>.24?1 : 0;
+        const alpha=[0.06,0.28,0.5,0.72,1][lvl];
+        cells.push(this.el("rect",{ key:w+"-"+d, x:w*(cell+gap), y:d*(cell+gap), width:cell, height:cell, rx:1.5,
+          fill: lvl===0? "var(--line2)" : `color-mix(in oklch, var(--accent) ${alpha*100}%, transparent)` }));
+      }
+    }
+    const W=weeks*(cell+gap), H=days*(cell+gap);
+    return this.el("svg",{viewBox:`0 0 ${W} ${H}`, style:{width:"100%",height:"auto",maxWidth:W+"px",display:"block"}, preserveAspectRatio:"xMinYMin meet"}, cells);
+  }
+  buildLangBar(){
+    const bar=this.el("div",{style:{display:"flex",height:"8px",width:"100%",overflow:"hidden",gap:"2px",marginBottom:"12px"}},
+      this.langs.map((l,i)=>this.el("div",{key:i, style:{width:l.pct+"%", background:l.hue? `oklch(.6 .18 ${l.hue})` : "var(--faint)"}})));
+    const legend=this.el("div",{style:{display:"flex",flexWrap:"wrap",gap:"6px 16px"}},
+      this.langs.map((l,i)=>this.el("div",{key:i, style:{display:"flex",alignItems:"center",gap:"6px",fontSize:"11.5px",color:"var(--muted)"}},
+        this.el("span",{style:{width:"7px",height:"7px",background:l.hue? `oklch(.6 .18 ${l.hue})`:"var(--faint)"}}),
+        this.el("span",{style:{color:"var(--fg)"}},l.name),
+        this.el("span",{},l.pct+"%"))));
+    return this.el("div",{},bar,legend);
+  }
+  buildDonut(){
+    const {easy,medium,hard}=this.lc; const total=easy+medium+hard;
+    const R=34, C=2*Math.PI*R, segs=[{v:easy,c:"oklch(.72 .15 165)"},{v:medium,c:"oklch(.75 .15 75)"},{v:hard,c:"oklch(.62 .21 25)"}];
+    let off=0; const arcs=segs.map((s,i)=>{ const len=C*(s.v/total); const a=this.el("circle",{key:i,cx:44,cy:44,r:R,fill:"none",stroke:s.c,strokeWidth:9,strokeDasharray:`${len} ${C-len}`,strokeDashoffset:-off,transform:"rotate(-90 44 44)"}); off+=len; return a; });
+    return this.el("svg",{viewBox:"0 0 88 88",style:{width:"92px",height:"92px",flex:"none"}},
+      this.el("circle",{cx:44,cy:44,r:R,fill:"none",stroke:"var(--line2)",strokeWidth:9}),
+      arcs,
+      this.el("text",{x:44,y:41,textAnchor:"middle",style:{font:"400 20px 'Instrument Serif',serif",fill:"var(--fg)"}},total),
+      this.el("text",{x:44,y:56,textAnchor:"middle",style:{font:"400 8.5px 'IBM Plex Mono',monospace",fill:"var(--muted)"}},"solved"));
+  }
+  buildSpark(){
+    const d=this.sparkData, w=100, h=30, max=Math.max(...d), min=Math.min(...d);
+    const pts=d.map((v,i)=>`${(i/(d.length-1))*w},${h-((v-min)/(max-min))*(h-4)-2}`).join(" ");
+    const area=`0,${h} ${pts} ${w},${h}`;
+    return this.el("svg",{viewBox:`0 0 ${w} ${h}`,preserveAspectRatio:"none",style:{width:"100%",height:"36px",display:"block"}},
+      this.el("polygon",{points:area,fill:"var(--accent-weak)"}),
+      this.el("polyline",{points:pts,fill:"none",stroke:"var(--accent)",strokeWidth:1.2,vectorEffect:"non-scaling-stroke"}),
+      this.el("circle",{cx:w,cy:h-((d[d.length-1]-min)/(max-min))*(h-4)-2,r:1.8,fill:"var(--accent)"}));
+  }
+
+  fmt(n){ return n>=1e6? (n/1e6).toFixed(2)+"M" : n>=1e3? (n/1e3).toFixed(1)+"k" : String(Math.round(n)); }
+
+  renderVals(){
+    const knobLeft=(this.state.knobPct*100).toFixed(1)+"%";
+    const suggest=[
+      {label:"experience?", onClick:()=>this.pushAndAnswer("experience")},
+      {label:"projects?", onClick:()=>this.pushAndAnswer("projects")},
+      {label:"stack?", onClick:()=>this.pushAndAnswer("skills")}
+    ];
+    const chatMessages=this.state.chatMessages.map(m=> m.from==="user"
+      ? {text:m.text, align:"flex-end", bg:"var(--accent-weak)", border:"var(--accent)", color:"var(--fg)"}
+      : {text:m.text, align:"flex-start", bg:"transparent", border:"var(--line)", color:"var(--muted)"} );
+    return {
+      flourish:this.state.flourish, whoami:this.state.whoami, clock:this.state.clock, tz:"IST",
+      knobLeft, onLeverDown:this.onLeverDown, trackRef:this.trackRef,
+      lineRef:this.lineRef, cursorRef:this.cursorRef, cursorLabel:this.state.cursorLabel,
+      pet:this.buildPet(), petHint:this.state.petHint,
+      exps:this.exps.map((e,i)=>({...e, open:this.openExp(i)})),
+      expOpen:this.state.expOpen!==null, expDetail:this.exps[this.state.expOpen]||this.exps[0], closeExp:this.closeExp,
+      projects:this.projects.map(p=>({...p, slug:p.name.toLowerCase()+".app", slot:"proj_"+p.no})), skills:this.skills, lc:this.lc,
+      gh:{ contribs:this.state.gh.contribs.toLocaleString(), repos:this.state.gh.repos, stars:this.state.gh.stars, streak:this.state.gh.streak, commits:this.commits },
+      obs:{ tokens:this.state.obs.tokens? this.state.obs.tokens.toFixed(2)+"M":"0", calls:this.state.obs.calls.toLocaleString(), cost:"$"+this.fullObs.cost.toFixed(4), p95:this.state.obs.p95, updated:"3s ago" },
+      contribGrid:this.buildContribGrid(), langBar:this.buildLangBar(), leetDonut:this.buildDonut(), throughputSpark:this.buildSpark(),
+      syncedAgo:"just now", buildHash:"a3f9c1", deployedAgo:"today", resumeJson:this.resumeJson(),
+      chatOpen:this.state.chatOpen, toggleChat:this.toggleChat, chatMessages, chatTyping:this.state.chatTyping,
+      chatInput:this.state.chatInput, onChatInput:this.onChatInput, sendChat:this.sendChat, chatScrollRef:this.chatScrollRef, chatSuggest:suggest,
+      eggOpen:this.state.eggOpen, closeEgg:this.closeEgg, stop:this.stop, downloadResume:this.downloadResume
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "Chirag Singh — AI Engineer",
+    "description": "Chirag Singh — AI Engineer. GenAI & Full-Stack. LLM systems in production.",
+    "ogTitle": "Chirag Singh — AI Engineer",
+    "ogDescription": "GenAI & Full-Stack. LLM systems in production — retrieval, evals, serving."
+  },
+  "header": {
+    "name": "chirag_singh",
+    "role": "ai_engineer",
+    "navSystems": "systems",
+    "navWork": "work",
+    "navStack": "stack",
+    "themeLeverTitle": "drag to retheme",
+    "themeToggleTitle": "toggle light / dark"
+  },
+  "languageSwitcher": {
+    "label": "language"
+  },
+  "hero": {
+    "availableForWork": "available for work",
+    "roleTag": "AI Engineer — GenAI & Full-Stack",
+    "firstName": "Chirag",
+    "lastName": "Singh",
+    "introLead": "I build and operate",
+    "introAccent": "LLM systems in production",
+    "introMid": "— retrieval, evals, and serving that hold up under real load.",
+    "introMuted": "Less demo, more infrastructure.",
+    "ctaWork": "selected work →",
+    "ctaGithub": "github ↗",
+    "ctaResume": "resume.json ↓",
+    "statYearsUnit": "yrs",
+    "statYearsLabel": "engineering AI",
+    "statProjectsLabel": "shipped projects",
+    "statPublicationsLabel": "publication",
+    "terminalWindowTitle": "~/chirag — zsh",
+    "terminalWhoamiCmd": "whoami",
+    "terminalWhoamiOutput": "chirag — ai engineer",
+    "terminalRoleCmd": "cat role.json",
+    "terminalStatus": "online",
+    "terminalHint": "type <fg>whoami</fg> anywhere ↵"
+  },
+  "footer": {
+    "heading": "Let's build.",
+    "linkEmail": "email",
+    "linkGithub": "github",
+    "linkLeetcode": "leetcode",
+    "linkLinkedin": "linkedin",
+    "linkX": "x",
+    "operational": "all systems operational",
+    "timezone": "IST",
+    "buildLabel": "build",
+    "deployedLabel": "deployed",
+    "deployedAgo": "today",
+    "copyright": "© {year} chirag singh · crafted, not templated"
+  },
+  "cursor": {
+    "view": "view",
+    "open": "open",
+    "download": "download",
+    "expand": "expand",
+    "chat": "chat",
+    "close": "close",
+    "drag": "drag",
+    "select": "select",
+    "toggle": "toggle"
+  }
+}

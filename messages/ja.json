@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "チラグ・シン — AIエンジニア",
+    "description": "チラグ・シン — AIエンジニア。GenAI とフルスタック。本番稼働中のLLMシステム。",
+    "ogTitle": "チラグ・シン — AIエンジニア",
+    "ogDescription": "GenAI とフルスタック。本番稼働中のLLMシステム — 検索、評価、サービング。"
+  },
+  "header": {
+    "name": "chirag_singh",
+    "role": "ai_engineer",
+    "navSystems": "システム",
+    "navWork": "実績",
+    "navStack": "スタック",
+    "themeLeverTitle": "ドラッグして色相を変更",
+    "themeToggleTitle": "ライト / ダーク切り替え"
+  },
+  "languageSwitcher": {
+    "label": "言語"
+  },
+  "hero": {
+    "availableForWork": "対応可能です",
+    "roleTag": "AIエンジニア — GenAI とフルスタック",
+    "firstName": "チラグ",
+    "lastName": "シン",
+    "introLead": "私は",
+    "introAccent": "本番稼働中のLLMシステム",
+    "introMid": "を構築・運用しています — 実負荷に耐える検索、評価、サービング。",
+    "introMuted": "デモより、インフラを。",
+    "ctaWork": "実績を見る →",
+    "ctaGithub": "github ↗",
+    "ctaResume": "resume.json ↓",
+    "statYearsUnit": "年",
+    "statYearsLabel": "AIエンジニアリング歴",
+    "statProjectsLabel": "リリース済みプロジェクト",
+    "statPublicationsLabel": "論文",
+    "terminalWindowTitle": "~/chirag — zsh",
+    "terminalWhoamiCmd": "whoami",
+    "terminalWhoamiOutput": "chirag — ai engineer",
+    "terminalRoleCmd": "cat role.json",
+    "terminalStatus": "online",
+    "terminalHint": "どこでも <fg>whoami</fg> と入力 ↵"
+  },
+  "footer": {
+    "heading": "一緒に作りましょう。",
+    "linkEmail": "メール",
+    "linkGithub": "github",
+    "linkLeetcode": "leetcode",
+    "linkLinkedin": "linkedin",
+    "linkX": "x",
+    "operational": "全システム正常稼働中",
+    "timezone": "IST",
+    "buildLabel": "ビルド",
+    "deployedLabel": "デプロイ",
+    "deployedAgo": "本日",
+    "copyright": "© {year} chirag singh · テンプレートではなく、手作り"
+  },
+  "cursor": {
+    "view": "見る",
+    "open": "開く",
+    "download": "ダウンロード",
+    "expand": "詳細",
+    "chat": "チャット",
+    "close": "閉じる",
+    "drag": "ドラッグ",
+    "select": "選択",
+    "toggle": "切替"
+  }
+}
