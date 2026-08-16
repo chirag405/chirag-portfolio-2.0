@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { downloadResume } from "@/lib/download-resume";
 
 function useTypedText(target: string, speedMs = 42) {
   const [text, setText] = useState("");
@@ -103,6 +104,10 @@ export function Hero() {
             <a
               href="#resume"
               data-cursor="download"
+              onClick={(e) => {
+                e.preventDefault();
+                downloadResume();
+              }}
               className="inline-block border border-[color:var(--line)] px-3.5 py-[9px] text-[color:var(--fg)]"
             >
               {t("ctaResume")}

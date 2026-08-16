@@ -54,6 +54,69 @@
     "deployedAgo": "today",
     "copyright": "© {year} chirag singh · crafted, not templated"
   },
+  "systems": {
+    "eyebrow": "// live systems",
+    "syncedAgo": "synced just now",
+    "footnote": "// GitHub + LeetCode are fetched live; the observability card tracks this site's own ask_chirag assistant.",
+    "githubOpen": "open",
+    "contribs": "contributions · 1y",
+    "repos": "public repos",
+    "stars": "stars earned",
+    "streak": "day streak",
+    "topLanguages": "top languages",
+    "recentCommits": "recent commits",
+    "githubUnavailable": "GitHub stats unavailable right now",
+    "contribsUnavailable": "add GITHUB_TOKEN for live contributions",
+    "leetcodeOpen": "open",
+    "easy": "easy",
+    "medium": "medium",
+    "hard": "hard",
+    "lcStreak": "streak",
+    "leetcodeUnavailable": "LeetCode stats unavailable right now",
+    "svcName": "svc/genai-support-bot",
+    "healthy": "healthy",
+    "tokensProcessed": "tokens processed · 24h",
+    "apiCalls": "api calls · 24h",
+    "costPerQuery": "cost / query",
+    "p95Latency": "p95 latency",
+    "throughput": "throughput · tok/s",
+    "updated": "updated {seconds}s ago",
+    "noTraffic": "no traffic yet — say hi to ask_chirag ↓"
+  },
+  "experience": {
+    "eyebrow": "// experience",
+    "hint": "click a role for detail",
+    "detailsCta": "details +",
+    "whatIDid": "what I did",
+    "close": "close"
+  },
+  "work": {
+    "eyebrow": "// selected work",
+    "hint": "9 shipped projects"
+  },
+  "publications": {
+    "eyebrow": "// publications",
+    "impactFactor": "Impact Factor",
+    "viewPaper": "view paper ↗"
+  },
+  "stack": {
+    "eyebrow": "// stack"
+  },
+  "chat": {
+    "title": "ask_chirag",
+    "placeholder": "ask about my work…",
+    "close": "close",
+    "hint": "ask me anything ↗",
+    "thinking": "thinking",
+    "suggestExperience": "experience?",
+    "suggestProjects": "projects?",
+    "suggestStack": "stack?",
+    "greeting": "hey — ask me anything about chirag's work, projects, or stack."
+  },
+  "easterEgg": {
+    "title": "whoami — unlocked",
+    "download": "↓ download resume.json"
+  },
   "cursor": {
     "view": "view",
     "open": "open",

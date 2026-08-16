@@ -19,6 +19,8 @@ export type InViewProps = {
   as?: React.ElementType;
   once?: boolean;
   className?: string;
+  id?: string;
+  style?: React.CSSProperties;
   onEnter?: () => void;
 };
 
@@ -35,6 +37,8 @@ export function InView({
   as = "div",
   once,
   className,
+  id,
+  style,
   onEnter,
 }: InViewProps) {
   const ref = useRef(null);
@@ -46,6 +50,8 @@ export function InView({
   return (
     <MotionComponent
       ref={ref}
+      id={id}
+      style={style}
       className={className}
       initial="hidden"
       onAnimationStart={() => {

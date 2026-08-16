@@ -54,6 +54,69 @@
     "deployedAgo": "आज",
     "copyright": "© {year} चिराग सिंह · बनाया गया, टेम्पलेट नहीं"
   },
+  "systems": {
+    "eyebrow": "// लाइव सिस्टम्स",
+    "syncedAgo": "अभी सिंक हुआ",
+    "footnote": "// GitHub और LeetCode लाइव फ़ेच होते हैं; ऑब्ज़र्वेबिलिटी कार्ड इसी साइट के ask_chirag असिस्टेंट को ट्रैक करता है।",
+    "githubOpen": "खोलें",
+    "contribs": "योगदान · 1 वर्ष",
+    "repos": "पब्लिक रेपो",
+    "stars": "प्राप्त स्टार्स",
+    "streak": "दिन की स्ट्रीक",
+    "topLanguages": "प्रमुख भाषाएँ",
+    "recentCommits": "हाल की कमिट्स",
+    "githubUnavailable": "अभी GitHub आँकड़े उपलब्ध नहीं",
+    "contribsUnavailable": "लाइव योगदान के लिए GITHUB_TOKEN जोड़ें",
+    "leetcodeOpen": "खोलें",
+    "easy": "आसान",
+    "medium": "मध्यम",
+    "hard": "कठिन",
+    "lcStreak": "स्ट्रीक",
+    "leetcodeUnavailable": "अभी LeetCode आँकड़े उपलब्ध नहीं",
+    "svcName": "svc/genai-support-bot",
+    "healthy": "स्वस्थ",
+    "tokensProcessed": "प्रोसेस्ड टोकन · 24घं",
+    "apiCalls": "एपीआई कॉल्स · 24घं",
+    "costPerQuery": "लागत / क्वेरी",
+    "p95Latency": "p95 लेटेंसी",
+    "throughput": "थ्रूपुट · tok/s",
+    "updated": "{seconds}सेकंड पहले अपडेट हुआ",
+    "noTraffic": "अभी कोई ट्रैफ़िक नहीं — ask_chirag से बात करें ↓"
+  },
+  "experience": {
+    "eyebrow": "// अनुभव",
+    "hint": "विवरण के लिए किसी भूमिका पर क्लिक करें",
+    "detailsCta": "विवरण +",
+    "whatIDid": "मैंने क्या किया",
+    "close": "बंद करें"
+  },
+  "work": {
+    "eyebrow": "// चुने हुए काम",
+    "hint": "9 शिप किए प्रोजेक्ट्स"
+  },
+  "publications": {
+    "eyebrow": "// प्रकाशन",
+    "impactFactor": "इम्पैक्ट फ़ैक्टर",
+    "viewPaper": "पेपर देखें ↗"
+  },
+  "stack": {
+    "eyebrow": "// स्टैक"
+  },
+  "chat": {
+    "title": "ask_chirag",
+    "placeholder": "मेरे काम के बारे में पूछें…",
+    "close": "बंद करें",
+    "hint": "कुछ भी पूछें ↗",
+    "thinking": "सोच रहा हूँ",
+    "suggestExperience": "अनुभव?",
+    "suggestProjects": "प्रोजेक्ट्स?",
+    "suggestStack": "स्टैक?",
+    "greeting": "नमस्ते — चिराग के काम, प्रोजेक्ट्स या स्टैक के बारे में कुछ भी पूछें।"
+  },
+  "easterEgg": {
+    "title": "whoami — अनलॉक",
+    "download": "↓ resume.json डाउनलोड करें"
+  },
   "cursor": {
     "view": "देखें",
     "open": "खोलें",

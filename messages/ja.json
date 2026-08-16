@@ -54,6 +54,69 @@
     "deployedAgo": "本日",
     "copyright": "© {year} chirag singh · テンプレートではなく、手作り"
   },
+  "systems": {
+    "eyebrow": "// ライブシステム",
+    "syncedAgo": "たった今同期",
+    "footnote": "// GitHubとLeetCodeはライブ取得。オブザーバビリティカードはこのサイト自体のask_chiragアシスタントを計測しています。",
+    "githubOpen": "開く",
+    "contribs": "コントリビューション · 1年",
+    "repos": "公開リポジトリ",
+    "stars": "獲得スター",
+    "streak": "連続日数",
+    "topLanguages": "主要言語",
+    "recentCommits": "最近のコミット",
+    "githubUnavailable": "現在GitHubの統計を取得できません",
+    "contribsUnavailable": "ライブのコントリビューション表示にはGITHUB_TOKENが必要です",
+    "leetcodeOpen": "開く",
+    "easy": "easy",
+    "medium": "medium",
+    "hard": "hard",
+    "lcStreak": "連続記録",
+    "leetcodeUnavailable": "現在LeetCodeの統計を取得できません",
+    "svcName": "svc/genai-support-bot",
+    "healthy": "正常",
+    "tokensProcessed": "処理トークン数 · 24時間",
+    "apiCalls": "API呼び出し数 · 24時間",
+    "costPerQuery": "クエリあたりコスト",
+    "p95Latency": "p95レイテンシ",
+    "throughput": "スループット · tok/s",
+    "updated": "{seconds}秒前に更新",
+    "noTraffic": "まだトラフィックがありません — ask_chiragに話しかけてみてください ↓"
+  },
+  "experience": {
+    "eyebrow": "// 経歴",
+    "hint": "詳細を見るには職歴をクリック",
+    "detailsCta": "詳細 +",
+    "whatIDid": "担当したこと",
+    "close": "閉じる"
+  },
+  "work": {
+    "eyebrow": "// 実績",
+    "hint": "9件のリリース済みプロジェクト"
+  },
+  "publications": {
+    "eyebrow": "// 論文",
+    "impactFactor": "インパクトファクター",
+    "viewPaper": "論文を見る ↗"
+  },
+  "stack": {
+    "eyebrow": "// スタック"
+  },
+  "chat": {
+    "title": "ask_chirag",
+    "placeholder": "私の仕事について聞いてください…",
+    "close": "閉じる",
+    "hint": "何でも聞いてください ↗",
+    "thinking": "考え中",
+    "suggestExperience": "経歴は？",
+    "suggestProjects": "プロジェクトは？",
+    "suggestStack": "スタックは？",
+    "greeting": "こんにちは — チラグの仕事、プロジェクト、スタックについて何でも聞いてください。"
+  },
+  "easterEgg": {
+    "title": "whoami — アンロック",
+    "download": "↓ resume.jsonをダウンロード"
+  },
   "cursor": {
     "view": "見る",
     "open": "開く",

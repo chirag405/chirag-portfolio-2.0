@@ -54,6 +54,69 @@
     "deployedAgo": "aujourd'hui",
     "copyright": "© {year} chirag singh · fait à la main, pas de template"
   },
+  "systems": {
+    "eyebrow": "// systèmes en direct",
+    "syncedAgo": "synchronisé à l'instant",
+    "footnote": "// GitHub et LeetCode sont récupérés en direct ; la carte d'observabilité suit l'assistant ask_chirag de ce site.",
+    "githubOpen": "ouvrir",
+    "contribs": "contributions · 1 an",
+    "repos": "dépôts publics",
+    "stars": "étoiles reçues",
+    "streak": "série de jours",
+    "topLanguages": "langages principaux",
+    "recentCommits": "commits récents",
+    "githubUnavailable": "statistiques GitHub indisponibles pour le moment",
+    "contribsUnavailable": "ajoutez GITHUB_TOKEN pour les contributions en direct",
+    "leetcodeOpen": "ouvrir",
+    "easy": "facile",
+    "medium": "moyen",
+    "hard": "difficile",
+    "lcStreak": "série",
+    "leetcodeUnavailable": "statistiques LeetCode indisponibles pour le moment",
+    "svcName": "svc/genai-support-bot",
+    "healthy": "opérationnel",
+    "tokensProcessed": "tokens traités · 24h",
+    "apiCalls": "appels api · 24h",
+    "costPerQuery": "coût / requête",
+    "p95Latency": "latence p95",
+    "throughput": "débit · tok/s",
+    "updated": "mis à jour il y a {seconds}s",
+    "noTraffic": "pas encore de trafic — dites bonjour à ask_chirag ↓"
+  },
+  "experience": {
+    "eyebrow": "// expérience",
+    "hint": "cliquez sur un rôle pour les détails",
+    "detailsCta": "détails +",
+    "whatIDid": "ce que j'ai fait",
+    "close": "fermer"
+  },
+  "work": {
+    "eyebrow": "// projets sélectionnés",
+    "hint": "9 projets livrés"
+  },
+  "publications": {
+    "eyebrow": "// publications",
+    "impactFactor": "Facteur d'impact",
+    "viewPaper": "voir l'article ↗"
+  },
+  "stack": {
+    "eyebrow": "// stack"
+  },
+  "chat": {
+    "title": "ask_chirag",
+    "placeholder": "posez une question sur mon travail…",
+    "close": "fermer",
+    "hint": "posez-moi n'importe quelle question ↗",
+    "thinking": "réflexion en cours",
+    "suggestExperience": "expérience ?",
+    "suggestProjects": "projets ?",
+    "suggestStack": "stack ?",
+    "greeting": "salut — posez-moi vos questions sur le travail, les projets ou le stack de chirag."
+  },
+  "easterEgg": {
+    "title": "whoami — débloqué",
+    "download": "↓ télécharger resume.json"
+  },
   "cursor": {
     "view": "voir",
     "open": "ouvrir",
