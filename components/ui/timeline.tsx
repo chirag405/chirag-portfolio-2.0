@@ -18,12 +18,21 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
 
+  // A one-shot getBoundingClientRect() on mount measures the row heights
+  // before web fonts (Instrument Serif) finish loading and swap in — the
+  // fallback font is shorter, so the line was frozen at that smaller height
+  // with nothing to re-measure once the real font pushed the cards taller.
+  // ResizeObserver keeps it correct through font swap, content changes, and
+  // viewport resizes.
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
-  }, [ref, data]);
+    const el = ref.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setHeight(entry.contentRect.height);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
