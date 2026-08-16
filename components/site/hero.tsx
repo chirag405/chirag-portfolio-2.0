@@ -4,30 +4,12 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { Terminal } from "@/components/ui/terminal";
+import { LinkPreview } from "@/components/ui/link-preview";
 import { downloadResume } from "@/lib/download-resume";
-
-function useTypedText(target: string, speedMs = 42) {
-  const [text, setText] = useState("");
-
-  useEffect(() => {
-    let i = 0;
-    // Resets the typewriter animation whenever `target` changes (e.g. locale switch) — not a cascading derived-state update.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setText("");
-    const id = setInterval(() => {
-      i++;
-      setText(target.slice(0, i));
-      if (i >= target.length) clearInterval(id);
-    }, speedMs);
-    return () => clearInterval(id);
-  }, [target, speedMs]);
-
-  return text;
-}
 
 export function Hero() {
   const t = useTranslations("hero");
-  const whoami = useTypedText(t("terminalWhoamiOutput"));
   const [flourish, setFlourish] = useState(true);
 
   useEffect(() => {
@@ -90,15 +72,15 @@ export function Hero() {
             </a>
           </Magnetic>
           <Magnetic range={70} intensity={0.3}>
-            <a
-              href="https://github.com/chirag405"
+            <LinkPreview
+              url="https://github.com/chirag405"
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="open"
               className="inline-block border border-[color:var(--line)] px-3.5 py-[9px] text-[color:var(--fg)]"
             >
               {t("ctaGithub")}
-            </a>
+            </LinkPreview>
           </Magnetic>
           <Magnetic range={70} intensity={0.3}>
             <a
@@ -133,37 +115,32 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="min-w-0 border border-[color:var(--line)]" style={{ background: "var(--card)" }}>
-        <div className="flex items-center gap-[7px] border-b border-[color:var(--line2)] px-3 py-[9px]">
-          <span className="h-[9px] w-[9px] rounded-full" style={{ background: "var(--line)" }} />
-          <span className="h-[9px] w-[9px] rounded-full" style={{ background: "var(--line)" }} />
-          <span className="h-[9px] w-[9px] rounded-full" style={{ background: "var(--line)" }} />
-          <span className="ml-1.5 text-[11px] text-[color:var(--faint)]">{t("terminalWindowTitle")}</span>
-        </div>
-        <div className="px-4 pb-[18px] pt-4 text-[12.5px] leading-[1.85]">
-          <div>
-            <span style={{ color: "var(--accent)" }}>$</span> {t("terminalWhoamiCmd")}
-          </div>
-          <div className="text-[color:var(--fg)]">
-            {whoami}
-            <span
-              className="ml-0.5 inline-block h-[14px] w-[7px] align-[-2px]"
-              style={{ background: "var(--accent)", animation: "blink 1s step-end infinite" }}
-            />
-          </div>
-          <div className="mt-2.5">
-            <span style={{ color: "var(--accent)" }}>$</span> {t("terminalRoleCmd")}
-          </div>
-          <div className="whitespace-pre-wrap text-[color:var(--muted)]">
-            {"{\n  \"focus\": [\"genai\",\"full-stack\"],\n  \"ships\": \"llm systems in prod\",\n  \"based\": \"IN\",\n  \"status\": "}
-            <span style={{ color: "var(--accent)" }}>{`"${t("terminalStatus")}"`}</span>
-            {"\n}"}
-          </div>
-          <div className="mt-2.5 text-[color:var(--faint)]">
-            $ {t.rich("terminalHint", {
-              fg: (chunks) => <span className="text-[color:var(--fg)]">{chunks}</span>,
-            })}
-          </div>
+      <div className="min-w-0">
+        <Terminal
+          username="chirag"
+          title={t("terminalWindowTitle")}
+          promptStyle="bare"
+          typingSpeed={42}
+          delayBetweenCommands={600}
+          initialDelay={300}
+          commands={[t("terminalWhoamiCmd"), t("terminalRoleCmd")]}
+          outputs={{
+            0: [t("terminalWhoamiOutput")],
+            1: [
+              "{",
+              '  "focus": ["genai","full-stack"],',
+              '  "ships": "llm systems in prod",',
+              '  "based": "IN",',
+              `  "status": "${t("terminalStatus")}"`,
+              "}",
+            ],
+          }}
+        />
+        <div className="mt-2.5 text-[11px] text-[color:var(--faint)]">
+          ${" "}
+          {t.rich("terminalHint", {
+            fg: (chunks) => <span className="text-[color:var(--fg)]">{chunks}</span>,
+          })}
         </div>
       </div>
 
