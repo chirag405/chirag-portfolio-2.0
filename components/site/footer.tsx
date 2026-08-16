@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { LinkPreview } from "@/components/ui/link-preview";
 
 const links: { key: "linkEmail" | "linkGithub" | "linkLeetcode" | "linkLinkedin" | "linkX"; href: string }[] = [
   { key: "linkEmail", href: "mailto:hello@chirag.dev" },
@@ -42,18 +43,23 @@ export function Footer() {
             {t("heading")}
           </div>
           <div className="mt-6 flex flex-wrap gap-2.5 text-[12.5px]">
-            {links.map((l) => (
-              <a
-                key={l.key}
-                href={l.href}
-                target={l.href.startsWith("http") ? "_blank" : undefined}
-                rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                data-cursor="open"
-                className="border border-[color:var(--line)] px-[13px] py-2 text-[color:var(--fg)]"
-              >
-                {t(l.key)}
-              </a>
-            ))}
+            {links.map((l) => {
+              const isExternal = l.href.startsWith("http");
+              const label = (
+                <span className="block border border-[color:var(--line)] px-[13px] py-2 text-[color:var(--fg)]">
+                  {t(l.key)}
+                </span>
+              );
+              return isExternal ? (
+                <LinkPreview key={l.key} url={l.href} target="_blank" rel="noopener noreferrer" data-cursor="open">
+                  {label}
+                </LinkPreview>
+              ) : (
+                <a key={l.key} href={l.href} data-cursor="open">
+                  {label}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
