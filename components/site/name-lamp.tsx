@@ -22,6 +22,11 @@ function useIsDark() {
  * the hero name (not a full section), recolored to --accent/--bg so it
  * follows the hue lever, and gated to dark mode only — the glow effect
  * only reads right against a near-black background.
+ *
+ * Sized via `inset-0` so it exactly fills its parent (the two-line "Chirag
+ * / Singh." wrapper) rather than a guessed fixed height — the glow wash and
+ * beams both scale to `h-full`, so they reach the second line too instead
+ * of fading out after the first.
  */
 export function NameLamp() {
   const isDark = useIsDark();
@@ -34,10 +39,7 @@ export function NameLamp() {
     : { delay: 0.2, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const };
 
   return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute -top-1 left-0 z-0 h-20 w-full max-w-[560px] overflow-visible sm:top-0 sm:h-28"
-    >
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-visible">
       <div className="relative flex h-full w-full items-start justify-center">
         {/* left beam */}
         <motion.div
@@ -74,25 +76,32 @@ export function NameLamp() {
           />
         </motion.div>
 
-        {/* soft glow */}
-        <div
-          className="absolute inset-x-auto top-1/3 h-14 w-56 -translate-y-1/2 rounded-full opacity-60 blur-3xl"
-          style={{ background: "var(--accent)" }}
+        {/* tall ambient wash — spans the full two-line height, brightest near the top and fading down */}
+        <motion.div
+          initial={{ opacity: 0, height: "45%" }}
+          animate={{ opacity: 0.55, height: "100%" }}
+          transition={transition}
+          className="absolute left-1/2 top-0 w-72 -translate-x-1/2 rounded-full blur-3xl"
+          style={{
+            background: "var(--accent)",
+            maskImage: "linear-gradient(to bottom, white, transparent)",
+            WebkitMaskImage: "linear-gradient(to bottom, white, transparent)",
+          }}
         />
         <motion.div
           initial={{ width: "5rem" }}
-          animate={{ width: "9rem" }}
+          animate={{ width: "10rem" }}
           transition={transition}
-          className="absolute top-1/3 h-10 -translate-y-1/2 rounded-full blur-2xl"
+          className="absolute top-0 h-24 -translate-y-2 rounded-full blur-2xl"
           style={{ background: "var(--accent)" }}
         />
 
-        {/* bright filament line */}
+        {/* bright filament line — the light source, right above the text */}
         <motion.div
           initial={{ width: "7rem", opacity: 0 }}
           animate={{ width: "14rem", opacity: 1 }}
           transition={transition}
-          className="absolute top-1/3 h-px -translate-y-1/2"
+          className="absolute top-0 h-px"
           style={{ background: "var(--accent)", boxShadow: "0 0 12px 1px var(--accent)" }}
         />
       </div>
