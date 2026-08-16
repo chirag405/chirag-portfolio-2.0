@@ -12,6 +12,7 @@
     "navWork": "projets",
     "navStack": "stack",
     "themeLeverTitle": "glisser pour changer la teinte",
+    "hueLabel": "teinte d'accent",
     "themeToggleTitle": "basculer clair / sombre"
   },
   "languageSwitcher": {
@@ -53,6 +54,10 @@
     "deployedLabel": "déployé",
     "deployedAgo": "aujourd'hui",
     "copyright": "© {year} chirag singh · fait à la main, pas de template"
+  },
+  "preview": {
+    "eyebrow": "// clair / sombre",
+    "hint": "glisser pour comparer"
   },
   "systems": {
     "eyebrow": "// systèmes en direct",

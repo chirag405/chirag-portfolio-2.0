@@ -12,6 +12,7 @@
     "navWork": "work",
     "navStack": "stack",
     "themeLeverTitle": "drag to retheme",
+    "hueLabel": "accent hue",
     "themeToggleTitle": "toggle light / dark"
   },
   "languageSwitcher": {
@@ -53,6 +54,10 @@
     "deployedLabel": "deployed",
     "deployedAgo": "today",
     "copyright": "© {year} chirag singh · crafted, not templated"
+  },
+  "preview": {
+    "eyebrow": "// light / dark",
+    "hint": "drag to compare"
   },
   "systems": {
     "eyebrow": "// live systems",

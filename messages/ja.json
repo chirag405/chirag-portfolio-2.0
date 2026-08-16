@@ -12,6 +12,7 @@
     "navWork": "実績",
     "navStack": "スタック",
     "themeLeverTitle": "ドラッグして色相を変更",
+    "hueLabel": "アクセントカラー",
     "themeToggleTitle": "ライト / ダーク切り替え"
   },
   "languageSwitcher": {
@@ -53,6 +54,10 @@
     "deployedLabel": "デプロイ",
     "deployedAgo": "本日",
     "copyright": "© {year} chirag singh · テンプレートではなく、手作り"
+  },
+  "preview": {
+    "eyebrow": "// ライト / ダーク",
+    "hint": "ドラッグして比較"
   },
   "systems": {
     "eyebrow": "// ライブシステム",

@@ -12,6 +12,7 @@
     "navWork": "काम",
     "navStack": "स्टैक",
     "themeLeverTitle": "रंग बदलने के लिए खींचें",
+    "hueLabel": "एक्सेंट ह्यू",
     "themeToggleTitle": "लाइट / डार्क बदलें"
   },
   "languageSwitcher": {
@@ -53,6 +54,10 @@
     "deployedLabel": "डिप्लॉय हुआ",
     "deployedAgo": "आज",
     "copyright": "© {year} चिराग सिंह · बनाया गया, टेम्पलेट नहीं"
+  },
+  "preview": {
+    "eyebrow": "// लाइट / डार्क",
+    "hint": "तुलना के लिए खींचें"
   },
   "systems": {
     "eyebrow": "// लाइव सिस्टम्स",

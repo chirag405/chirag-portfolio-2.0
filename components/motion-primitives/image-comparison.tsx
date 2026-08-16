@@ -22,6 +22,7 @@ const ImageComparisonContext = createContext<
 export type ImageComparisonProps = {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   enableHover?: boolean;
   springOptions?: SpringOptions;
 };
@@ -34,6 +35,7 @@ const DEFAULT_SPRING_OPTIONS = {
 function ImageComparison({
   children,
   className,
+  style,
   enableHover,
   springOptions,
 }: ImageComparisonProps) {
@@ -74,6 +76,7 @@ function ImageComparison({
           enableHover && "cursor-ew-resize",
           className
         )}
+        style={style}
         onMouseMove={handleDrag}
         onMouseDown={() => !enableHover && setIsDragging(true)}
         onMouseUp={() => !enableHover && setIsDragging(false)}

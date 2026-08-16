@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { HueLever } from "@/components/site/hue-lever";
+import { HueAdaptiveSlider } from "@/components/site/hue-adaptive-slider";
 import { ThemeToggle } from "@/components/site/theme-toggle";
 import { LanguageSwitcher } from "@/components/site/language-switcher";
 
@@ -35,7 +35,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
           <ThemeToggle />
-          <HueLever />
+          <HueAdaptiveSlider />
         </div>
       </div>
     </div>
