@@ -1,16 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useEffect, useMemo, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import { Terminal } from "@/components/ui/terminal";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { NameLamp } from "@/components/site/name-lamp";
 import { downloadResume } from "@/lib/download-resume";
+import { createTerminalCommandHandler } from "@/lib/terminal-commands";
 
 export function Hero() {
   const t = useTranslations("hero");
+  const locale = useLocale();
+  const handleTerminalCommand = useMemo(() => createTerminalCommandHandler(locale), [locale]);
   const [flourish, setFlourish] = useState(true);
 
   useEffect(() => {
@@ -139,6 +142,8 @@ export function Hero() {
               "}",
             ],
           }}
+          onCommand={handleTerminalCommand}
+          inputPlaceholder={t("terminalInputPlaceholder")}
         />
         <div className="mt-2.5 text-[11px] text-[color:var(--faint)]">
           ${" "}

@@ -39,7 +39,8 @@
     "terminalWhoamiOutput": "chirag — ai engineer",
     "terminalRoleCmd": "cat role.json",
     "terminalStatus": "online",
-    "terminalHint": "tapez <fg>whoami</fg> n'importe où ↵"
+    "terminalHint": "tapez <fg>whoami</fg> n'importe où ↵",
+    "terminalInputPlaceholder": "tapez une commande, ou 'help'…"
   },
   "footer": {
     "heading": "Construisons.",

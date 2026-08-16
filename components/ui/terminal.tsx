@@ -288,6 +288,14 @@ export interface TerminalProps {
   delayBetweenCommands?: number;
   initialDelay?: number;
   enableSound?: boolean;
+  /**
+   * When set, the terminal becomes typeable once the scripted intro
+   * finishes: a real input line appears, Enter submits, and this resolves
+   * the response lines to print (async — e.g. a fetch to a chat API).
+   * Throw or resolve ["..."] with an error message to surface a failure.
+   */
+  onCommand?: (command: string) => Promise<string[]> | string[];
+  inputPlaceholder?: string;
 }
 
 export function Terminal({
@@ -301,9 +309,12 @@ export function Terminal({
   delayBetweenCommands = 800,
   initialDelay = 500,
   enableSound = true,
+  onCommand,
+  inputPlaceholder,
 }: TerminalProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const inView = useInView(containerRef);
   const { down, up } = useAudio(enableSound);
 
@@ -316,6 +327,8 @@ export function Terminal({
     "idle" | "typing" | "executing" | "outputting" | "pausing" | "done"
   >("idle");
   const [cursorVisible, setCursorVisible] = useState(true);
+  const [liveInput, setLiveInput] = useState("");
+  const [busy, setBusy] = useState(false);
 
   const currentCommand = commands[commandIdx] || "";
   const currentOutputs = useMemo(
@@ -361,7 +374,6 @@ export function Terminal({
     // Phase-machine transition (typing -> executing -> outputting/pausing),
     // not a derived/cascading update — each phase change commits one step
     // of the scripted terminal animation.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLines((prev) => [...prev, { type: "command", content: currentCommand }]);
     setCurrentText("");
 
@@ -419,7 +431,41 @@ export function Terminal({
     if (contentRef.current) {
       contentRef.current.scrollTop = contentRef.current.scrollHeight;
     }
-  }, [lines, phase]);
+  }, [lines, phase, liveInput, busy]);
+
+  const isInteractive = phase === "done" && Boolean(onCommand);
+
+  useEffect(() => {
+    if (isInteractive && !busy) inputRef.current?.focus();
+  }, [isInteractive, busy]);
+
+  const focusInput = () => {
+    if (isInteractive) inputRef.current?.focus();
+  };
+
+  const submitCommand = async () => {
+    const cmd = liveInput.trim();
+    if (!cmd || busy || !onCommand) return;
+    if (cmd.toLowerCase() === "clear") {
+      setLines([]);
+      setLiveInput("");
+      return;
+    }
+    setLines((prev) => [...prev, { type: "command", content: cmd }]);
+    setLiveInput("");
+    setBusy(true);
+    try {
+      const result = await onCommand(cmd);
+      setLines((prev) => [...prev, ...result.map((content) => ({ type: "output" as const, content }))]);
+    } catch (err) {
+      setLines((prev) => [
+        ...prev,
+        { type: "output", content: err instanceof Error ? err.message : "command failed" },
+      ]);
+    } finally {
+      setBusy(false);
+    }
+  };
 
   const prompt =
     promptStyle === "bare" ? (
@@ -458,7 +504,11 @@ export function Terminal({
         {/* Terminal Content */}
         <div
           ref={contentRef}
-          className="no-visible-scrollbar h-64 overflow-y-auto px-4 pb-[18px] pt-4 font-mono text-[12.5px] leading-[1.85]"
+          onClick={focusInput}
+          className={cn(
+            "no-visible-scrollbar h-64 overflow-y-auto px-4 pb-[18px] pt-4 font-mono text-[12.5px] leading-[1.85]",
+            isInteractive && "cursor-text",
+          )}
         >
           {lines.map((line, i) => (
             <div key={i} className="whitespace-pre-wrap">
@@ -486,17 +536,55 @@ export function Terminal({
 
           {(phase === "done" ||
             phase === "pausing" ||
-            phase === "outputting") && (
-            <div className="whitespace-pre-wrap">
+            phase === "outputting") &&
+            !isInteractive && (
+              <div className="whitespace-pre-wrap">
+                {prompt}
+                <span
+                  className={cn(
+                    "inline-block h-[14px] w-[7px] align-[-2px] transition-opacity duration-100",
+                    !cursorVisible && "opacity-0",
+                  )}
+                  style={{ background: "var(--accent)" }}
+                />
+              </div>
+            )}
+
+          {isInteractive && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                submitCommand();
+              }}
+              className="flex items-center whitespace-pre-wrap"
+            >
               {prompt}
-              <span
-                className={cn(
-                  "inline-block h-[14px] w-[7px] align-[-2px] transition-opacity duration-100",
-                  !cursorVisible && "opacity-0",
-                )}
-                style={{ background: "var(--accent)" }}
+              <input
+                ref={inputRef}
+                value={liveInput}
+                disabled={busy}
+                onChange={(e) => setLiveInput(e.target.value)}
+                onKeyDown={(e) => {
+                  const key = e.key.length === 1 ? e.key : e.key === "Backspace" ? "Backspace" : null;
+                  if (key) down(key === "Backspace" ? " " : key);
+                }}
+                onKeyUp={(e) => {
+                  const key = e.key.length === 1 ? e.key : e.key === "Backspace" ? "Backspace" : null;
+                  if (key) up(key === "Backspace" ? " " : key);
+                }}
+                placeholder={busy ? "" : inputPlaceholder}
+                autoComplete="off"
+                autoCorrect="off"
+                spellCheck={false}
+                className="min-w-0 flex-1 border-none bg-transparent font-mono text-[12.5px] outline-none"
+                style={{ color: "var(--fg)", caretColor: "var(--accent)" }}
               />
-            </div>
+              {busy && (
+                <span style={{ color: "var(--faint)" }}>
+                  thinking<span style={{ animation: "blink 1s step-end infinite" }}>…</span>
+                </span>
+              )}
+            </form>
           )}
         </div>
       </div>

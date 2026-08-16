@@ -39,7 +39,8 @@
     "terminalWhoamiOutput": "chirag — ai engineer",
     "terminalRoleCmd": "cat role.json",
     "terminalStatus": "online",
-    "terminalHint": "どこでも <fg>whoami</fg> と入力 ↵"
+    "terminalHint": "どこでも <fg>whoami</fg> と入力 ↵",
+    "terminalInputPlaceholder": "コマンドを入力、または 'help'…"
   },
   "footer": {
     "heading": "一緒に作りましょう。",
