@@ -9,7 +9,7 @@ import { InView } from "@/components/motion-primitives/in-view";
 import { useIsDark } from "@/lib/use-is-dark";
 
 const links: { key: "linkEmail" | "linkGithub" | "linkLeetcode" | "linkLinkedin" | "linkX"; href: string }[] = [
-  { key: "linkEmail", href: "mailto:hello@chirag.dev" },
+  { key: "linkEmail", href: "mailto:chiragdhouni20@gmail.com" },
   { key: "linkGithub", href: "https://github.com/chirag405" },
   { key: "linkLeetcode", href: "https://leetcode.com/chirag406" },
   { key: "linkLinkedin", href: "https://www.linkedin.com/in/chirag404/" },
