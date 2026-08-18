@@ -6,11 +6,12 @@
     "ogDescription": "GenAI とフルスタック。本番稼働中のLLMシステム — 検索、評価、サービング。"
   },
   "header": {
-    "name": "chirag_singh",
-    "role": "ai_engineer",
     "navSystems": "システム",
+    "navExperience": "経歴",
     "navWork": "実績",
+    "navPublications": "論文",
     "navStack": "スタック",
+    "navContact": "連絡先",
     "themeLeverTitle": "ドラッグして色相を変更",
     "hueLabel": "アクセントカラー",
     "themeToggleTitle": "ライト / ダーク切り替え"
@@ -43,6 +44,8 @@
     "terminalInputPlaceholder": "コマンドを入力、または 'help'…"
   },
   "footer": {
+    "availableBadge": "新しい仕事を募集中",
+    "pitch": "本番環境で機能するGenAIシステムを構築するフルタイム・契約の仕事を探しています。retrieval、エージェント、モデルサービングで実際の課題に取り組んでいるなら、ぜひ話を聞かせてください。",
     "heading": "一緒に作りましょう。",
     "linkEmail": "メール",
     "linkGithub": "github",
@@ -74,6 +77,8 @@
     "medium": "medium",
     "hard": "hard",
     "lcStreak": "連続記録",
+    "lcRanking": "グローバル順位",
+    "lcRecentSolves": "最近解いた問題",
     "leetcodeUnavailable": "現在LeetCodeの統計を取得できません",
     "svcName": "svc/genai-support-bot",
     "healthy": "正常",
@@ -87,14 +92,17 @@
   },
   "experience": {
     "eyebrow": "// 経歴",
-    "hint": "詳細を見るには職歴をクリック",
-    "detailsCta": "詳細 +",
-    "whatIDid": "担当したこと",
-    "close": "閉じる"
+    "hint": "2件の職歴",
+    "whatIDid": "担当したこと"
   },
   "work": {
     "eyebrow": "// 実績",
-    "hint": "9件のリリース済みプロジェクト"
+    "hint": "12件のリリース済みプロジェクト",
+    "notYetLive": "まだ非公開",
+    "github": "GitHub",
+    "technologies": "技術スタック",
+    "links": "リンク",
+    "website": "ウェブサイト"
   },
   "publications": {
     "eyebrow": "// 論文",

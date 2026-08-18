@@ -30,9 +30,9 @@ export function LeetcodeCard() {
       <div className="flex items-center justify-between border-b px-4.5 py-3.5" style={{ borderColor: "var(--line2)" }}>
         <div className="text-[12.5px]">
           <span className="text-[color:var(--muted)]">leetcode/</span>
-          <span className="font-medium">chirag405</span>
+          <span className="font-medium">chirag406</span>
         </div>
-        <a href="https://leetcode.com/chirag405" target="_blank" rel="noopener noreferrer" data-cursor="open" className="text-[11.5px] text-[color:var(--muted)]">
+        <a href="https://leetcode.com/chirag406" target="_blank" rel="noopener noreferrer" data-cursor="open" className="text-[11.5px] text-[color:var(--muted)]">
           {t("leetcodeOpen")} ↗
         </a>
       </div>
@@ -41,15 +41,41 @@ export function LeetcodeCard() {
           {error ? t("leetcodeUnavailable") : <div className="h-24 animate-pulse" style={{ background: "var(--line2)" }} />}
         </div>
       ) : (
-        <div className="flex items-center gap-5 p-4.5">
-          <Donut easy={stats.easy} medium={stats.medium} hard={stats.hard} />
-          <div className="flex min-w-0 flex-1 flex-col gap-2.5">
-            <Row label={t("easy")} value={stats.easy} color="oklch(.72 .15 165)" />
-            <Row label={t("medium")} value={stats.medium} color="oklch(.75 .15 75)" />
-            <Row label={t("hard")} value={stats.hard} color="oklch(.62 .21 25)" />
-            <div className="my-0.5 h-px" style={{ background: "var(--line2)" }} />
-            <Row label={t("lcStreak")} value={`${stats.streak}d`} color="var(--muted)" />
+        <div className="flex flex-1 flex-col p-4.5">
+          <div className="flex items-center gap-5">
+            <Donut easy={stats.easy} medium={stats.medium} hard={stats.hard} />
+            <div className="flex min-w-0 flex-1 flex-col gap-2.5">
+              <Row label={t("easy")} value={stats.easy} color="oklch(.72 .15 165)" />
+              <Row label={t("medium")} value={stats.medium} color="oklch(.75 .15 75)" />
+              <Row label={t("hard")} value={stats.hard} color="oklch(.62 .21 25)" />
+              <div className="my-0.5 h-px" style={{ background: "var(--line2)" }} />
+              <Row label={t("lcStreak")} value={`${stats.streak}d`} color="var(--muted)" />
+            </div>
           </div>
+          {stats.ranking !== null && (
+            <div className="mt-4.5 flex items-baseline justify-between border-t pt-3.5" style={{ borderColor: "var(--line2)" }}>
+              <span className="text-[11px] text-[color:var(--muted)]">{t("lcRanking")}</span>
+              <span className="font-serif text-[18px]">#{stats.ranking.toLocaleString()}</span>
+            </div>
+          )}
+          {stats.recentSolves.length > 0 && (
+            <div className="mt-4.5 border-t pt-3.5" style={{ borderColor: "var(--line2)" }}>
+              <div className="mb-2.5 text-[11px] text-[color:var(--muted)]">{t("lcRecentSolves")}</div>
+              <div className="flex flex-col gap-2">
+                {stats.recentSolves.map((s) => (
+                  <div key={s.title} className="flex gap-2.5 text-xs leading-[1.35]">
+                    <span
+                      className="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap"
+                      style={{ color: "var(--fg)" }}
+                    >
+                      {s.title}
+                    </span>
+                    <span className="ml-auto flex-none text-[color:var(--faint)]">{s.when}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -6,11 +6,12 @@
     "ogDescription": "जेनएआई और फुल-स्टैक। प्रोडक्शन में एलएलएम सिस्टम — रिट्रीवल, इवैल्स, सर्विंग।"
   },
   "header": {
-    "name": "chirag_singh",
-    "role": "ai_engineer",
     "navSystems": "सिस्टम्स",
+    "navExperience": "अनुभव",
     "navWork": "काम",
+    "navPublications": "प्रकाशन",
     "navStack": "स्टैक",
+    "navContact": "संपर्क",
     "themeLeverTitle": "रंग बदलने के लिए खींचें",
     "hueLabel": "एक्सेंट ह्यू",
     "themeToggleTitle": "लाइट / डार्क बदलें"
@@ -43,6 +44,8 @@
     "terminalInputPlaceholder": "कमांड टाइप करें, या 'help'…"
   },
   "footer": {
+    "availableBadge": "नए काम के लिए उपलब्ध",
+    "pitch": "प्रोडक्शन में टिकने वाले GenAI सिस्टम बनाने के लिए फुल-टाइम और कॉन्ट्रैक्ट भूमिकाओं के लिए उपलब्ध हूं। अगर आप रिट्रीवल, एजेंट्स या मॉडल सर्विंग से जुड़ी कोई असली समस्या सुलझा रहे हैं — मुझे सुनना अच्छा लगेगा।",
     "heading": "चलिए कुछ बनाते हैं।",
     "linkEmail": "ईमेल",
     "linkGithub": "github",
@@ -74,6 +77,8 @@
     "medium": "मध्यम",
     "hard": "कठिन",
     "lcStreak": "स्ट्रीक",
+    "lcRanking": "ग्लोबल रैंक",
+    "lcRecentSolves": "हाल में हल किए",
     "leetcodeUnavailable": "अभी LeetCode आँकड़े उपलब्ध नहीं",
     "svcName": "svc/genai-support-bot",
     "healthy": "स्वस्थ",
@@ -87,14 +92,17 @@
   },
   "experience": {
     "eyebrow": "// अनुभव",
-    "hint": "विवरण के लिए किसी भूमिका पर क्लिक करें",
-    "detailsCta": "विवरण +",
-    "whatIDid": "मैंने क्या किया",
-    "close": "बंद करें"
+    "hint": "2 भूमिकाएं",
+    "whatIDid": "मैंने क्या किया"
   },
   "work": {
     "eyebrow": "// चुने हुए काम",
-    "hint": "9 शिप किए प्रोजेक्ट्स"
+    "hint": "12 शिप किए प्रोजेक्ट्स",
+    "notYetLive": "अभी सार्वजनिक नहीं",
+    "github": "GitHub",
+    "technologies": "तकनीकें",
+    "links": "लिंक",
+    "website": "वेबसाइट"
   },
   "publications": {
     "eyebrow": "// प्रकाशन",

@@ -53,7 +53,7 @@ export function HueAdaptiveSlider() {
         aria-label={t("hueLabel")}
         data-cursor="drag"
         className={[
-          "h-1 w-24 cursor-pointer appearance-none rounded-full",
+          "h-1 w-14 cursor-pointer appearance-none rounded-full",
           "[&::-webkit-slider-runnable-track]:h-1 [&::-webkit-slider-runnable-track]:rounded-full",
           "[&::-moz-range-track]:h-1 [&::-moz-range-track]:rounded-full [&::-moz-range-track]:bg-[color:var(--line)]",
           "[&::-webkit-slider-thumb]:mt-[-4px] [&::-webkit-slider-thumb]:h-[10px] [&::-webkit-slider-thumb]:w-[10px] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[var(--accent)] [&::-webkit-slider-thumb]:shadow-[0_0_0_3px_var(--accent-weak)]",

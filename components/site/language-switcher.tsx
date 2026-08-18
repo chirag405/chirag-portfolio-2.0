@@ -3,9 +3,9 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useTransition } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { localeNames, routing, type Locale } from "@/i18n/routing";
+import { localeNames, localeCodes, routing, type Locale } from "@/i18n/routing";
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   const t = useTranslations("languageSwitcher");
   const locale = useLocale();
   const pathname = usePathname();
@@ -20,18 +20,22 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className="relative flex items-center">
+    <div className="relative flex items-center" title={compact ? localeNames[locale as Locale] : undefined}>
       <select
         aria-label={t("label")}
         data-cursor="select"
         value={locale}
         onChange={onChange}
         disabled={isPending}
-        className="cursor-pointer appearance-none border border-[color:var(--line)] bg-transparent py-1 pl-2 pr-5 text-[11.5px] text-[color:var(--fg)] outline-none disabled:opacity-50"
+        className={
+          compact
+            ? "cursor-pointer appearance-none border border-[color:var(--line)] bg-transparent py-1 pl-2 pr-4 text-[11px] tracking-[0.04em] text-[color:var(--fg)] outline-none disabled:opacity-50"
+            : "cursor-pointer appearance-none border border-[color:var(--line)] bg-transparent py-1 pl-2 pr-5 text-[11.5px] text-[color:var(--fg)] outline-none disabled:opacity-50"
+        }
       >
         {routing.locales.map((l) => (
           <option key={l} value={l} className="bg-[color:var(--card)] text-[color:var(--fg)]">
-            {localeNames[l]}
+            {compact ? localeCodes[l] : localeNames[l]}
           </option>
         ))}
       </select>

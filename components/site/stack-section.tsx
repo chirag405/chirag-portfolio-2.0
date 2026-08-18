@@ -2,7 +2,51 @@
 
 import { useTranslations } from "next-intl";
 import { InView } from "@/components/motion-primitives/in-view";
+import { InfiniteSlider } from "@/components/motion-primitives/infinite-slider";
 import { skills } from "@/lib/data/portfolio";
+
+const LOGO_SLUGS = [
+  "python",
+  "pytorch",
+  "fastapi",
+  "nextdotjs",
+  "react",
+  "typescript",
+  "anthropic",
+  "langchain",
+  "supabase",
+  "postgresql",
+  "docker",
+  "kubernetes",
+  "redis",
+  "vercel",
+  "googlecloud",
+  "cloudflare",
+  "flutter",
+  "dart",
+  "nodedotjs",
+  "githubactions",
+  "firebase",
+  "opentelemetry",
+  "clickhouse",
+  "git",
+];
+
+function LogoStrip() {
+  return (
+    <InfiniteSlider gap={44} speed={32} speedOnHover={10} className="mb-9 py-1">
+      {LOGO_SLUGS.map((slug) => (
+        <img
+          key={slug}
+          src={`https://cdn.simpleicons.org/${slug}`}
+          alt={slug}
+          loading="lazy"
+          className="h-6 w-auto flex-none opacity-70 grayscale transition-[opacity,filter] duration-200 hover:opacity-100 hover:grayscale-0"
+        />
+      ))}
+    </InfiniteSlider>
+  );
+}
 
 export function StackSection() {
   const t = useTranslations("stack");
@@ -18,18 +62,22 @@ export function StackSection() {
       style={{ borderColor: "var(--line)" }}
     >
       <div className="mb-9 text-[12.5px] uppercase tracking-[0.14em] text-[color:var(--muted)]">{t("eyebrow")}</div>
-      <div className="grid gap-x-10 gap-y-8.5" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))" }}>
+      <LogoStrip />
+      <div className="flex flex-col gap-7">
         {skills.map((g) => (
-          <div key={g.cat}>
-            <div className="mb-3.5 text-xs" style={{ color: "var(--accent)" }}>
+          <div key={g.cat} className="grid grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-[180px_1fr]">
+            <div className="text-xs" style={{ color: "var(--accent)" }}>
               {g.cat}
             </div>
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-wrap gap-1.5">
               {g.items.map((s) => (
-                <div key={s} className="flex items-center gap-2.5 text-[13px] text-[color:var(--fg)]">
-                  <span className="h-1 w-1 flex-none" style={{ background: "var(--line)" }} />
+                <span
+                  key={s}
+                  className="border px-2.5 py-1 text-[12px]"
+                  style={{ borderColor: "var(--line)", color: "var(--fg)" }}
+                >
                   {s}
-                </div>
+                </span>
               ))}
             </div>
           </div>

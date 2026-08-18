@@ -1,3 +1,5 @@
+import { relativeTime } from "@/lib/relative-time";
+
 const GITHUB_USERNAME = "chirag405";
 const CACHE_TTL_MS = 5 * 60 * 1000;
 
@@ -19,22 +21,10 @@ type Repo = {
   fork: boolean;
 };
 
-type PushEvent = {
-  type: string;
-  created_at: string;
-  repo: { name: string };
-  payload: { commits?: { sha: string; message: string }[] };
+type CommitApiEntry = {
+  sha: string;
+  commit: { message: string; author: { date: string } | null };
 };
-
-function relativeTime(iso: string): string {
-  const ms = Date.now() - new Date(iso).getTime();
-  const mins = Math.floor(ms / 60000);
-  if (mins < 60) return `${Math.max(mins, 1)}m`;
-  const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h`;
-  const days = Math.floor(hours / 24);
-  return `${days}d`;
-}
 
 async function ghFetch(url: string) {
   const headers: Record<string, string> = { Accept: "application/vnd.github+json" };
@@ -96,12 +86,48 @@ async function fetchContributionsAndStreak(): Promise<{
 
 let cache: { data: GithubStats; expiresAt: number } | null = null;
 
+/**
+ * GitHub's public events feed stopped including `payload.commits[]` on
+ * PushEvents (it now only has ref/head/before), so "recent commits" is
+ * pulled straight from the commits endpoint of the most recently pushed
+ * repos instead — real messages/dates, no per-event extra fetch needed.
+ */
+async function fetchRecentCommits(
+  repos: Repo[],
+): Promise<{ hash: string; msg: string; when: string }[]> {
+  const candidates = repos.filter((r) => !r.fork).slice(0, 3);
+  const perRepo = await Promise.all(
+    candidates.map(async (r) => {
+      try {
+        const commits = (await ghFetch(
+          `https://api.github.com/repos/${GITHUB_USERNAME}/${r.name}/commits?per_page=3`,
+        )) as CommitApiEntry[];
+        return commits.map((c) => ({
+          hash: c.sha.slice(0, 7),
+          msg: c.commit.message.split("\n")[0].slice(0, 60),
+          date: c.commit.author?.date ?? new Date(0).toISOString(),
+        }));
+      } catch {
+        return [];
+      }
+    }),
+  );
+  return perRepo
+    .flat()
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 4)
+    .map((c) => ({ hash: c.hash, msg: c.msg, when: relativeTime(c.date) }));
+}
+
 export async function getGithubStats(): Promise<GithubStats> {
   if (cache && cache.expiresAt > Date.now()) return cache.data;
 
-  const [repos, events, contribData] = await Promise.all([
-    ghFetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=pushed`) as Promise<Repo[]>,
-    ghFetch(`https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=30`) as Promise<PushEvent[]>,
+  const repos = (await ghFetch(
+    `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=pushed`,
+  )) as Repo[];
+
+  const [commits, contribData] = await Promise.all([
+    fetchRecentCommits(repos),
     fetchContributionsAndStreak(),
   ]);
 
@@ -121,17 +147,6 @@ export async function getGithubStats(): Promise<GithubStats> {
       name,
       pct: totalLangRepos > 0 ? Math.round((count / totalLangRepos) * 100) : 0,
     }));
-
-  const commits = events
-    .filter((e) => e.type === "PushEvent" && e.payload.commits?.length)
-    .flatMap((e) =>
-      (e.payload.commits ?? []).map((c) => ({
-        hash: c.sha.slice(0, 7),
-        msg: c.message.split("\n")[0].slice(0, 60),
-        when: relativeTime(e.created_at),
-      }))
-    )
-    .slice(0, 4);
 
   const data: GithubStats = {
     repos: repos.length,

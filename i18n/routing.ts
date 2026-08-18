@@ -14,6 +14,15 @@ export const localeNames: Record<Locale, string> = {
   ja: "日本語",
 };
 
+/** Short codes for the compact hero switcher — full names still show as a title/tooltip. */
+export const localeCodes: Record<Locale, string> = {
+  en: "EN",
+  hi: "HI",
+  es: "ES",
+  fr: "FR",
+  ja: "JA",
+};
+
 export const routing = defineRouting({
   locales,
   defaultLocale,

@@ -9,6 +9,7 @@ export function PublicationsSection() {
   return (
     <InView
       as="section"
+      id="publications"
       once
       variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}

@@ -6,11 +6,12 @@
     "ogDescription": "GenAI et Full-Stack. Systèmes LLM en production — retrieval, evals, serving."
   },
   "header": {
-    "name": "chirag_singh",
-    "role": "ai_engineer",
     "navSystems": "systèmes",
+    "navExperience": "expérience",
     "navWork": "projets",
+    "navPublications": "publications",
     "navStack": "stack",
+    "navContact": "contact",
     "themeLeverTitle": "glisser pour changer la teinte",
     "hueLabel": "teinte d'accent",
     "themeToggleTitle": "basculer clair / sombre"
@@ -43,6 +44,8 @@
     "terminalInputPlaceholder": "tapez une commande, ou 'help'…"
   },
   "footer": {
+    "availableBadge": "disponible pour de nouveaux projets",
+    "pitch": "Disponible pour des postes à temps plein ou en contrat, pour construire des systèmes GenAI qui tiennent en production. Si vous résolvez quelque chose de concret avec le retrieval, les agents ou le serving de modèles, j'aimerais en discuter.",
     "heading": "Construisons.",
     "linkEmail": "email",
     "linkGithub": "github",
@@ -74,6 +77,8 @@
     "medium": "moyen",
     "hard": "difficile",
     "lcStreak": "série",
+    "lcRanking": "classement mondial",
+    "lcRecentSolves": "résolus récemment",
     "leetcodeUnavailable": "statistiques LeetCode indisponibles pour le moment",
     "svcName": "svc/genai-support-bot",
     "healthy": "opérationnel",
@@ -87,14 +92,17 @@
   },
   "experience": {
     "eyebrow": "// expérience",
-    "hint": "cliquez sur un rôle pour les détails",
-    "detailsCta": "détails +",
-    "whatIDid": "ce que j'ai fait",
-    "close": "fermer"
+    "hint": "2 rôles",
+    "whatIDid": "ce que j'ai fait"
   },
   "work": {
     "eyebrow": "// projets sélectionnés",
-    "hint": "9 projets livrés"
+    "hint": "12 projets livrés",
+    "notYetLive": "pas encore public",
+    "github": "GitHub",
+    "technologies": "technologies",
+    "links": "liens",
+    "website": "site web"
   },
   "publications": {
     "eyebrow": "// publications",

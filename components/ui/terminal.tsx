@@ -483,6 +483,20 @@ export function Terminal({
     <div
       ref={containerRef}
       className={cn("w-full font-mono text-xs", className)}
+      style={
+        {
+          // Pinned to the dark-theme palette regardless of the site's own
+          // light/dark toggle — a terminal window reads as a terminal only
+          // in dark chrome. --accent is intentionally left alone: it's
+          // already theme-agnostic (hue-lever driven) in globals.css.
+          "--card": "#0a0a0a",
+          "--fg": "#fafaf8",
+          "--muted": "#a6a69e",
+          "--faint": "#6b6b64",
+          "--line": "rgba(250, 250, 248, 0.12)",
+          "--line2": "rgba(250, 250, 248, 0.07)",
+        } as React.CSSProperties
+      }
     >
       <div
         className="overflow-hidden border"

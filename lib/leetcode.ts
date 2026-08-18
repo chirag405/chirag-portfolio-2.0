@@ -1,4 +1,6 @@
-const LEETCODE_USERNAME = "chirag405";
+import { relativeTime } from "@/lib/relative-time";
+
+const LEETCODE_USERNAME = "chirag406";
 const CACHE_TTL_MS = 10 * 60 * 1000;
 
 export type LeetcodeStats = {
@@ -6,15 +8,22 @@ export type LeetcodeStats = {
   medium: number;
   hard: number;
   streak: number;
+  ranking: number | null;
+  recentSolves: { title: string; when: string }[];
 };
 
 const QUERY = `query getUserProfile($username: String!) {
   matchedUser(username: $username) {
     username
+    profile { ranking }
     submitStats: submitStatsGlobal {
       acSubmissionNum { difficulty count }
     }
     submissionCalendar
+  }
+  recentAcSubmissionList(username: $username, limit: 4) {
+    title
+    timestamp
   }
 }`;
 
@@ -61,11 +70,18 @@ export async function getLeetcodeStats(): Promise<LeetcodeStats> {
     ])
   );
 
+  const recentAc: { title: string; timestamp: string }[] = json?.data?.recentAcSubmissionList ?? [];
+
   const data: LeetcodeStats = {
     easy: byDifficulty.get("Easy") ?? 0,
     medium: byDifficulty.get("Medium") ?? 0,
     hard: byDifficulty.get("Hard") ?? 0,
     streak: computeStreak(matched.submissionCalendar),
+    ranking: matched.profile?.ranking ?? null,
+    recentSolves: recentAc.map((s) => ({
+      title: s.title,
+      when: relativeTime(Number(s.timestamp) * 1000),
+    })),
   };
 
   cache = { data, expiresAt: Date.now() + CACHE_TTL_MS };

@@ -36,8 +36,8 @@ export function createTerminalCommandHandler(locale: string) {
       return ["→ github.com/chirag405 (opened in a new tab)"];
     }
     if (cmd === "leetcode") {
-      openLink("https://leetcode.com/chirag405");
-      return ["→ leetcode.com/chirag405 (opened in a new tab)"];
+      openLink("https://leetcode.com/chirag406");
+      return ["→ leetcode.com/chirag406 (opened in a new tab)"];
     }
     if (cmd === "linkedin") {
       openLink("https://www.linkedin.com/in/chirag404/");
@@ -52,10 +52,10 @@ export function createTerminalCommandHandler(locale: string) {
       return ["→ downloading chirag-singh.resume.json"];
     }
     if (cmd === "projects" || cmd === "work") {
-      return ["9 shipped projects — scroll to // selected work, or ask me about a specific one."];
+      return ["12 shipped projects — scroll to // selected work, or ask me about a specific one."];
     }
     if (cmd === "stack") {
-      return ["Python, vLLM, FastAPI, Next.js, Postgres, PyTorch, Docker, K8s — full list in // stack below."];
+      return ["Next.js, TypeScript, Python, LangChain/LangGraph, Claude/Gemini/OpenAI, Supabase, Prisma, Flutter — full list in // stack below."];
     }
 
     // Fallback: real answer from the RAG-backed assistant.
