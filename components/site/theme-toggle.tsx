@@ -1,21 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n/navigation";
 
 type Theme = "light" | "dark";
 
+function resolveTheme(): Theme {
+  try {
+    const stored = localStorage.getItem("chirag-theme");
+    if (stored === "dark" || stored === "light") return stored;
+  } catch {}
+  const systemDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+  return systemDark ? "dark" : "light";
+}
+
 export function ThemeToggle() {
   const t = useTranslations("header");
+  const pathname = usePathname();
   const [theme, setTheme] = useState<Theme | null>(null);
 
-  useEffect(() => {
-    const current = document.documentElement.getAttribute("data-theme");
-    // One-shot hydration from the attribute ThemeScript already set pre-paint, not a derived/cascading update.
+  useLayoutEffect(() => {
+    // A locale switch is a client-side route transition, not a full reload —
+    // Next re-renders <html> from the new route's tree, which drops the
+    // data-theme attribute since it's set imperatively outside React's props
+    // for that element. Reapply it (before paint) on every navigation.
+    const resolved = resolveTheme();
+    document.documentElement.setAttribute("data-theme", resolved);
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setTheme(current === "dark" ? "dark" : "light");
-  }, []);
+    setTheme(resolved);
+  }, [pathname]);
 
   const toggle = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
