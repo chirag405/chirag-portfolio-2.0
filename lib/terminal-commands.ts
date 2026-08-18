@@ -1,4 +1,4 @@
-import { downloadResume } from "@/lib/download-resume";
+import { openResume } from "@/lib/download-resume";
 
 const HELP_LINES = [
   "available commands:",
@@ -9,7 +9,7 @@ const HELP_LINES = [
   "  github            open my GitHub",
   "  leetcode          open my LeetCode",
   "  linkedin          open my LinkedIn",
-  "  resume            download resume.json",
+  "  resume            open resume",
   "  clear             clear the screen",
   "  <anything else>   ask me anything — answered live",
 ];
@@ -48,8 +48,8 @@ export function createTerminalCommandHandler(locale: string) {
       return ["→ x.com/chirag405 (opened in a new tab)"];
     }
     if (cmd === "resume" || cmd === "cat resume.json" || cmd === "download resume") {
-      downloadResume();
-      return ["→ downloading chirag-singh.resume.json"];
+      openResume();
+      return ["→ opening resume (opened in a new tab)"];
     }
     if (cmd === "projects" || cmd === "work") {
       return ["12 shipped projects — scroll to // selected work, or ask me about a specific one."];

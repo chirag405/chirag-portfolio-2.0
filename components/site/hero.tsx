@@ -10,7 +10,7 @@ import { NameLamp } from "@/components/site/name-lamp";
 import { LanguageSwitcher } from "@/components/site/language-switcher";
 import { ThemeToggle } from "@/components/site/theme-toggle";
 import { HueAdaptiveSlider } from "@/components/site/hue-adaptive-slider";
-import { downloadResume } from "@/lib/download-resume";
+import { openResume } from "@/lib/download-resume";
 import { createTerminalCommandHandler } from "@/lib/terminal-commands";
 import { projects } from "@/lib/data/portfolio";
 
@@ -61,12 +61,12 @@ export function Hero() {
               fontSize: "clamp(44px,7.8vw,104px)",
             }}
           >
-            <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
+            <span className="-mb-[0.2em] -mt-[0.2em] block overflow-hidden pb-[0.2em] pt-[0.2em]">
               <TextEffect as="span" per="line" preset="slide" delay={0.05} className="inline-block">
                 {t("firstName")}
               </TextEffect>
             </span>
-            <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
+            <span className="-mb-[0.2em] -mt-[0.2em] block overflow-hidden pb-[0.2em] pt-[0.2em]">
               <TextEffect as="span" per="line" preset="slide" delay={0.16} className="inline-block">
                 {`${t("lastName")}.`}
               </TextEffect>
@@ -107,7 +107,7 @@ export function Hero() {
               data-cursor="download"
               onClick={(e) => {
                 e.preventDefault();
-                downloadResume();
+                openResume();
               }}
               className="inline-block border border-[color:var(--line)] px-3.5 py-[9px] text-[color:var(--fg)]"
             >

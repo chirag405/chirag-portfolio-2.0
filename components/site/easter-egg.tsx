@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "motion/react";
 import { resumeJson } from "@/lib/data/portfolio";
-import { downloadResume } from "@/lib/download-resume";
+import { openResume } from "@/lib/download-resume";
 
 export function EasterEgg() {
   const t = useTranslations("easterEgg");
@@ -66,7 +66,7 @@ export function EasterEgg() {
                 href="#resume"
                 onClick={(e) => {
                   e.preventDefault();
-                  downloadResume();
+                  openResume();
                 }}
                 className="text-[12.5px]"
                 style={{ color: "var(--accent)" }}

@@ -1,9 +1,10 @@
 const THEME_INIT_SCRIPT = `(function(){
   try {
     var stored = localStorage.getItem('chirag-theme');
-    // Defaults to light regardless of OS preference — only an explicit
-    // in-app toggle switches to dark.
-    var theme = stored === 'dark' ? 'dark' : 'light';
+    // No explicit in-app choice yet — fall back to the OS/browser preference
+    // instead of hardcoding light, so a system-dark user sees dark by default.
+    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored === 'dark' || stored === 'light' ? stored : (systemDark ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
     var hue = localStorage.getItem('chirag-hue');
     if (hue) {
